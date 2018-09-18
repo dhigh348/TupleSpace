@@ -29,6 +29,25 @@ public class TupleSpace {
             this.repository.add(tuple);
         }
     }
+
+
+    /**
+     * Returning the individual tuple from the repository
+     * @return tuple to print
+     */
+    public Tuple read(Object...objects) {
+        Tuple tuple = null;
+        
+        for (Tuple t: repository) {
+            if (t.getSize() == objects.length) {
+                if (t.checkPattern(objects)) {
+                    tuple = t;
+                }
+            }
+        }
+        
+        return tuple;
+    }
     
     
     /**
@@ -48,25 +67,6 @@ public class TupleSpace {
         
         if (tuple != null) {
             repository.remove(tuple);
-        }
-        
-        return tuple;
-    }
-    
-    
-    /**
-     * Returning the individual tuple from the repository
-     * @return tuple to print
-     */
-    public Tuple read(Object...objects) {
-        Tuple tuple = null;
-        
-        for (Tuple t: repository) {
-            if (t.getSize() == objects.length) {
-                if (t.checkPattern(objects)) {
-                    tuple = t;
-                }
-            }
         }
         
         return tuple;
