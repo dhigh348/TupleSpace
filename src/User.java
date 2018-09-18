@@ -4,7 +4,6 @@
  */
 public class User<T1, T2, T3, T4, T5> {
 
-    private final int USER_SIZE = 3;
     private T1 name;
     private T2 username;
     private T3 online;
@@ -82,8 +81,8 @@ public class User<T1, T2, T3, T4, T5> {
 
 
     /**
-     * Function to return the size of the user class
-     * @return USER_SIZE int of number of fields
+     * Function to return the size of the user
+     * @return size int of number of fields
      */
     public int userSize() {
         int size = 0;

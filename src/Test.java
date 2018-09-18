@@ -1,4 +1,3 @@
-import java.sql.Time;
 
 /**
  * Test.java is the class that tests the program
@@ -11,32 +10,32 @@ public class Test {
      * @param args
      */
     public static void main(String[] args) {
-        TupleSpace ts = new TupleSpace();
-        User<String, String, Boolean, String, Time> user = new User<>("Danan",
-                                                                      "dhigh",
-                                                                      null,
-                                                                      null,
-                                                                      null);
-        User<String, String, Boolean, String, Time> user1 = new User<>("DananQ",
-                                                                      "dhigh",
-                                                                      false,
-                                                                      "nope ggth",
-                                                                      null);
-        User<String, String, Boolean, String, Time> user2 = new User<>("Danan",
-                                                                      "dhighq",
-                                                                      null,
-                                                                      "nopeasdf",
-                                                                      null);
-        User<String, String, Boolean, String, Time> user3 = new User<>("Danan",
-                                                                      "dhiasdfgh",
-                                                                      false,
-                                                                      "nopeddddddd",
-                                                                      null);
-
-        ts.add(user, user1, user2, user3);
-        ts.printMap();
-        ts.removeUser(user2);
-        ts.printMap();
+        TupleSpace ts = new TupleSpace(6);
+        Tuple tuple = null;
+        
+        for (int i = 0; i < 10; i++) {
+            if (i % 5 == 0) {
+                tuple = new Tuple();
+            } else if (i % 5 == 1) {
+                tuple = new Tuple(1);
+            } else if (i % 5 == 2) {
+                tuple = new Tuple(1, "hello");
+            } else if (i % 5 == 3) {
+                tuple = new Tuple(1, "hey", 3.14);
+            } else if (i % 5 == 4) {
+                tuple = new Tuple(1, "why", "tree", 8);
+            }
+    
+            ts.add(tuple);
+        }
+        
+        ts.print();
+        System.out.println("+++++++++++++++");
+        ts.remove(1, "hey");
+        ts.print();
+        
+        
+//        System.out.println(System.currentTimeMillis());
     }
 
 }

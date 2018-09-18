@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -9,58 +11,72 @@ import java.util.HashMap;
  */
 public class TupleSpace {
 
-    private HashMap<Integer, ArrayList<User>> repository;
+    private int size;
+    private List<Tuple> repository;
 
     /**
      * Constructor for the TupleSpace
      */
-    public TupleSpace() {
-        this.repository = new HashMap<>();
+    public TupleSpace(int size) {
+        this.size = size;
+        this.repository = new LinkedList<>();
     }
-
-
+    
     /**
-     * Add a value to the hash map
-     * @param users adding to the map
+     * Adding the specified tuple to the TupleSpace repository
      */
-    public void add(User...users) {
-        ArrayList<User> list;
-
-        for (User user: users) {
-            if (!this.repository.containsKey(user.userSize())) {
-                this.repository.put(user.userSize(), new ArrayList<User>());
-            }
-        }
-
-        for (User user: users) {
-            list = this.repository.get(user.userSize());
-            if (!list.contains(user)) {
-                list = this.repository.get(user.userSize());
-                list.add(user);
-            }
+    public void add(Tuple tuple) {
+        if (tuple != null) {
+            this.repository.add(tuple);
         }
     }
-
-
+    
+    
     /**
-     * Retrieving the user from the map
-     * @return user searching for
+     * Returning and removing the tuple from the repository.
+     * @return tuple from the repository
      */
-    public void removeUser(User user) {
-        if (this.repository.containsKey(user.userSize())) {
-            ArrayList<User> list = this.repository.get(user.userSize());
-            if (list.contains(user)) {
-                list.remove(user);
+    public Tuple remove(Object...objects) {
+        Tuple tuple = null;
+        
+        for (Tuple t: repository) {
+            if (t.checkPattern(objects)) {
+                tuple = t;
             }
         }
+        
+        if (tuple != null) {
+            repository.remove(tuple);
+        }
+        
+        return tuple;
+    }
+    
+    
+    /**
+     * Returning the individual tuple from the repository
+     * @return tuple to print
+     */
+    public Tuple read(Object...objects) {
+        Tuple tuple = null;
+        
+        for (Tuple t: repository) {
+            if (t.checkPattern(objects)) {
+            
+            }
+        }
+        
+        return tuple;
     }
 
 
     /**
      * Printing the map
      */
-    public void printMap() {
-        System.out.println(this.repository);
+    public void print() {
+        for (Tuple t: this.repository) {
+            System.out.println(t);
+        }
     }
 
 }
