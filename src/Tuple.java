@@ -40,10 +40,9 @@ public class Tuple {
      */
     public boolean checkPattern(Object...objects) {
         for (int i = 0; i < this.set.size(); i++) {
-            if (this.set.get(i).equals(objects[i].getClass()) &&
+            if (this.set.get(i).getClass().equals(objects[i].getClass()) &&
                 this.set.get(i) != null &&
                 objects[i] != null) {
-                System.out.println(this.set.get(i) + " " + objects[i]);
                 if (!this.set.get(i).equals(objects[i])) {
                     return false;
                 }

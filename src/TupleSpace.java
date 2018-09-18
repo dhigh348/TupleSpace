@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,8 +39,10 @@ public class TupleSpace {
         Tuple tuple = null;
         
         for (Tuple t: repository) {
-            if (t.checkPattern(objects)) {
-                tuple = t;
+            if (t.getSize() == objects.length) {
+                if (t.checkPattern(objects)) {
+                    tuple = t;
+                }
             }
         }
         
@@ -61,8 +62,10 @@ public class TupleSpace {
         Tuple tuple = null;
         
         for (Tuple t: repository) {
-            if (t.checkPattern(objects)) {
-            
+            if (t.getSize() == objects.length) {
+                if (t.checkPattern(objects)) {
+                    tuple = t;
+                }
             }
         }
         
@@ -73,10 +76,11 @@ public class TupleSpace {
     /**
      * Printing the map
      */
-    public void print() {
-        for (Tuple t: this.repository) {
-            System.out.println(t);
-        }
+    public void print(Object...objects) {
+        Tuple tuple = null;
+        ArrayList<Tuple> list = new ArrayList<>();
+        
+        
     }
 
 }

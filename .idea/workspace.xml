@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="Updating TupleSpace.java">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tuple.java" />
+    <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="Fixing check">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TupleSpace/TupleSpace.class" afterPath="$PROJECT_DIR$/out/production/TupleSpace/TupleSpace.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TupleSpace/User.class" afterPath="$PROJECT_DIR$/out/production/TupleSpace/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tuple.java" afterPath="$PROJECT_DIR$/src/Tuple.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TupleSpace.java" afterPath="$PROJECT_DIR$/src/TupleSpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/User.java" afterPath="$PROJECT_DIR$/src/User.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,8 +78,8 @@
       <file leaf-file-name="TupleSpace.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+            <state relative-caret-position="825">
+              <caret line="77" column="7" lean-forward="true" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,8 +90,8 @@
       <file leaf-file-name="Tuple.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tuple.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="248">
+              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
               <folding>
                 <element signature="e#680#681#0" expanded="true" />
                 <element signature="e#712#713#0" expanded="true" />
@@ -115,8 +113,8 @@
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="434">
+              <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="33" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -144,8 +142,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/User.java" />
         <option value="$PROJECT_DIR$/src/Tuple.java" />
-        <option value="$PROJECT_DIR$/src/TupleSpace.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/TupleSpace.java" />
       </list>
     </option>
   </component>
@@ -293,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537282720343</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding checker functionality to the tuple.">
+      <created>1537297615096</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1537297615096</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -367,7 +372,8 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="Second commit" />
     <MESSAGE value="Updating TupleSpace.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating TupleSpace.java" />
+    <MESSAGE value="Adding checker functionality to the tuple." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding checker functionality to the tuple." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -408,28 +414,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="33" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        <state relative-caret-position="825">
+          <caret line="77" column="7" lean-forward="true" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="248">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
             <element signature="e#680#681#0" expanded="true" />
             <element signature="e#712#713#0" expanded="true" />

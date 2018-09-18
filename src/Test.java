@@ -29,9 +29,9 @@ public class Test {
             ts.add(tuple);
         }
         
-        ts.print();
-        System.out.println("+++++++++++++++");
-        ts.remove(1, "hey");
+//        ts.print();
+//        System.out.println("+++++++++++++++");
+//        ts.remove(1, "hey", 3.12);
         ts.print();
         
         
