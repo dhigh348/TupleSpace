@@ -1,20 +1,22 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
+
+/**
+ * TupleSpace.java is the data center for holding the users and their associated
+ *   messages and statuses.
+ * Danan High, 9/18/2018
+ */
 public class TupleSpace {
 
     private HashMap<Integer, ArrayList<User>> repository;
 
+    /**
+     * Constructor for the TupleSpace
+     */
     public TupleSpace() {
         this.repository = new HashMap<>();
     }
-
-
-    /**
-     * Making the data repository
-     *
-     */
 
 
     /**
@@ -45,7 +47,6 @@ public class TupleSpace {
      * @return user searching for
      */
     public void removeUser(User user) {
-        int numberOfParameters = user.userSize();
         if (this.repository.containsKey(user.userSize())) {
             ArrayList<User> list = this.repository.get(user.userSize());
             if (list.contains(user)) {
