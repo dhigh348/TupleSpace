@@ -32,8 +32,17 @@ public class Tuple {
     public int getSize() {
         return this.size;
     }
-    
-    
+
+
+    /**
+     * Returning the list of objects associated with this tuple
+     * @return set of objects
+     */
+    public ArrayList<Object> getTupleSet() {
+        return this.set;
+    }
+
+
     /**
      * Checking if the tuple pattern is a match for the pattern being searched for
      * @return true if the same and false otherwise

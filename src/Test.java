@@ -12,8 +12,9 @@ public class Test {
     public static void main(String[] args) {
         TupleSpace ts = new TupleSpace(6);
         Tuple tuple = null;
-        
-        for (int i = 0; i < 10; i++) {
+        System.out.println(System.currentTimeMillis());
+
+        for (int i = 0; i < 1000000; i++) {
             if (i % 5 == 0) {
                 tuple = new Tuple();
             } else if (i % 5 == 1) {
@@ -29,13 +30,13 @@ public class Test {
             ts.add(tuple);
         }
         
+        long time1 = System.currentTimeMillis();
+        System.out.println(time1);
 //        ts.print();
 //        System.out.println("+++++++++++++++");
-//        ts.remove(1, "hey", 3.12);
-        ts.print();
+        ts.remove(1, "hey", 3.14);
         
-        
-//        System.out.println(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis() - time1);
     }
 
 }

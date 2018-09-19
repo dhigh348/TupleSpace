@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -12,6 +10,7 @@ public class TupleSpace {
 
     private int size;
     private List<Tuple> repository;
+    private HashMap<Integer, ArrayList<Tuple>> map;
 
     /**
      * Constructor for the TupleSpace
@@ -19,14 +18,27 @@ public class TupleSpace {
     public TupleSpace(int size) {
         this.size = size;
         this.repository = new LinkedList<>();
+        this.map = new HashMap<>();
     }
     
     /**
      * Adding the specified tuple to the TupleSpace repository
      */
     public void add(Tuple tuple) {
-        if (tuple != null) {
-            this.repository.add(tuple);
+//        if (tuple != null) {
+//            this.repository.add(tuple);
+//        }
+        if (this.map.containsKey(tuple.getSize())) {
+            ArrayList<Tuple> list = map.get(tuple.getSize());
+            if (tuple != null) {
+                if (!list.contains(tuple)) {
+                    list.add(tuple);
+                }
+            }
+        } else {
+            this.map.put(tuple.getSize(), new ArrayList<Tuple>());
+            ArrayList<Tuple> list = map.get(tuple.getSize());
+            list.add(tuple);
         }
     }
 
@@ -55,32 +67,29 @@ public class TupleSpace {
      * @return tuple from the repository
      */
     public Tuple remove(Object...objects) {
+        Random rand = new Random();
         Tuple tuple = null;
         
-        for (Tuple t: repository) {
-            if (t.getSize() == objects.length) {
-                if (t.checkPattern(objects)) {
-                    tuple = t;
-                }
-            }
-        }
-        
-        if (tuple != null) {
-            repository.remove(tuple);
+//        for (Tuple t: repository) {
+//            if (t.getSize() == objects.length) {
+//                if (t.checkPattern(objects)) {
+//                    tuple = t;
+//                }
+//            }
+//        }
+//
+//        if (tuple != null) {
+//            repository.remove(tuple);
+//        }
+
+        if (map.containsKey(objects.length)) {
+            ArrayList<Tuple> list = map.get(objects.length);
+            int number = rand.nextInt(list.size());
+            tuple = list.get(number);
+            list.remove(number);
         }
         
         return tuple;
-    }
-
-
-    /**
-     * Printing the map
-     */
-    public void print(Object...objects) {
-        Tuple tuple = null;
-        ArrayList<Tuple> list = new ArrayList<>();
-        
-        
     }
 
 }
