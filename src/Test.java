@@ -35,8 +35,12 @@ public class Test {
 //        ts.print();
 //        System.out.println("+++++++++++++++");
         ts.remove(1, "hey", 3.14);
+        long time2 = System.currentTimeMillis();
+        System.out.println("After removing = " +  (time2 - time1));
+
+        ts.add(new Tuple("hello", "why", 8));
         
-        System.out.println(System.currentTimeMillis() - time1);
+        System.out.println("After adding = " + (System.currentTimeMillis() - time2));
     }
 
 }

@@ -25,9 +25,6 @@ public class TupleSpace {
      * Adding the specified tuple to the TupleSpace repository
      */
     public void add(Tuple tuple) {
-//        if (tuple != null) {
-//            this.repository.add(tuple);
-//        }
         if (this.map.containsKey(tuple.getSize())) {
             ArrayList<Tuple> list = map.get(tuple.getSize());
             if (tuple != null) {
@@ -69,18 +66,6 @@ public class TupleSpace {
     public Tuple remove(Object...objects) {
         Random rand = new Random();
         Tuple tuple = null;
-        
-//        for (Tuple t: repository) {
-//            if (t.getSize() == objects.length) {
-//                if (t.checkPattern(objects)) {
-//                    tuple = t;
-//                }
-//            }
-//        }
-//
-//        if (tuple != null) {
-//            repository.remove(tuple);
-//        }
 
         if (map.containsKey(objects.length)) {
             ArrayList<Tuple> list = map.get(objects.length);
