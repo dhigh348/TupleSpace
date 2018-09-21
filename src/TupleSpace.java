@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 
@@ -11,6 +12,8 @@ public class TupleSpace {
     private int size;
     private List<Tuple> repository;
     private HashMap<Integer, ArrayList<Tuple>> map;
+    private HashMap<String, ArrayList<Object>> obMap;
+
 
     /**
      * Constructor for the TupleSpace
@@ -19,27 +22,28 @@ public class TupleSpace {
         this.size = size;
         this.repository = new LinkedList<>();
         this.map = new HashMap<>();
+        this.obMap = new HashMap<>();
     }
     
     /**
      * Adding the specified tuple to the TupleSpace repository
      */
     public void add(Tuple tuple) {
-        if (this.map.containsKey(tuple.getSize())) {
-            ArrayList<Tuple> list = map.get(tuple.getSize());
-            if (tuple != null) {
-                if (!list.contains(tuple)) {
-                    list.add(tuple);
-                }
+        ArrayList<Object> temp;
+        String tupParamName = "";
+
+        for (Object o: tuple.getSet()) {
+            if (!obMap.containsKey(o)) {
+                obMap.put(tupParamName, new ArrayList<>());
+                temp = obMap.get(tupParamName);
+                temp.add(o);
+            } else {
+
             }
-        } else {
-            this.map.put(tuple.getSize(), new ArrayList<Tuple>());
-            ArrayList<Tuple> list = map.get(tuple.getSize());
-            list.add(tuple);
         }
     }
-
-
+    
+    
     /**
      * Returning the individual tuple from the repository
      * @return tuple to print
@@ -66,7 +70,7 @@ public class TupleSpace {
     public Tuple remove(Object...objects) {
         Random rand = new Random();
         Tuple tuple = null;
-
+        
         if (map.containsKey(objects.length)) {
             ArrayList<Tuple> list = map.get(objects.length);
             int number = rand.nextInt(list.size());
@@ -76,5 +80,12 @@ public class TupleSpace {
         
         return tuple;
     }
-
+    
+    // printer
+    public void print() {
+        for (Map.Entry<String, ArrayList<Object>> map: obMap.entrySet()) {
+            System.out.println(map.getKey() + " = " +  map.getValue());
+        }
+    }
+    
 }
