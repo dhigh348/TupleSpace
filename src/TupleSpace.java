@@ -34,15 +34,34 @@ public class TupleSpace {
         String key = "";
         int i = 0;
         
+//        for (Object o: tuple.getSet()) {
+//            if (!obMap.containsKey(key)) {
+//                obMap.put(key, new ArrayList<Object>());
+//                temp = obMap.get(key);
+//                if (i == tuple.getSize()) {
+//                    temp.add(tuple);
+//                } else {
+//                    temp.add(o);
+//                }
+//            } else {
+//                temp = obMap.get(key);
+//                if (i == tuple.getSize() - 1) {
+//                    temp.add(tuple);
+//                } else {
+//                    temp.add(o);
+//                }
+//            }
+//            key += ("" + o + "");
+//            i++;
+//        }
+
         for (Object o: tuple.getSet()) {
-
-            makeWildCardArray();
-
             if (!obMap.containsKey(key)) {
                 obMap.put(key, new ArrayList<Object>());
                 temp = obMap.get(key);
-                if (i == tuple.getSize()) {
+                if (i == tuple.getSize() - 1) {
                     temp.add(tuple);
+                    temp.add(o);
                 } else {
                     temp.add(o);
                 }
@@ -50,6 +69,7 @@ public class TupleSpace {
                 temp = obMap.get(key);
                 if (i == tuple.getSize() - 1) {
                     temp.add(tuple);
+                    temp.add(o);
                 } else {
                     temp.add(o);
                 }
@@ -103,17 +123,4 @@ public class TupleSpace {
             System.out.println(map.getKey() + " = " +  map.getValue());
         }
     }
-
-
-    /**
-     * Making the wild card keys
-     */
-    private void makeWildCardArray(Tuple tuple) {
-        for (int i = 0; i < tuple.getSet().size(); i++) {
-            if (tuple.getSet().size() == 1) {
-                wildCardList.add("*");
-            }
-        }
-    }
-
 }
