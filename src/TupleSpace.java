@@ -11,6 +11,7 @@ public class TupleSpace {
 
     private int size;
     private List<Tuple> repository;
+    private ArrayList<String> wildCardList;
     private HashMap<Integer, ArrayList<Tuple>> map;
     private HashMap<String, ArrayList<Object>> obMap;
 
@@ -30,16 +31,31 @@ public class TupleSpace {
      */
     public void add(Tuple tuple) {
         ArrayList<Object> temp;
-        String tupParamName = "";
-
+        String key = "";
+        int i = 0;
+        
         for (Object o: tuple.getSet()) {
-            if (!obMap.containsKey(o)) {
-                obMap.put(tupParamName, new ArrayList<>());
-                temp = obMap.get(tupParamName);
-                temp.add(o);
-            } else {
 
+            makeWildCardArray();
+
+            if (!obMap.containsKey(key)) {
+                obMap.put(key, new ArrayList<Object>());
+                temp = obMap.get(key);
+                if (i == tuple.getSize()) {
+                    temp.add(tuple);
+                } else {
+                    temp.add(o);
+                }
+            } else {
+                temp = obMap.get(key);
+                if (i == tuple.getSize() - 1) {
+                    temp.add(tuple);
+                } else {
+                    temp.add(o);
+                }
             }
+            key += ("" + o + "");
+            i++;
         }
     }
     
@@ -87,5 +103,17 @@ public class TupleSpace {
             System.out.println(map.getKey() + " = " +  map.getValue());
         }
     }
-    
+
+
+    /**
+     * Making the wild card keys
+     */
+    private void makeWildCardArray(Tuple tuple) {
+        for (int i = 0; i < tuple.getSet().size(); i++) {
+            if (tuple.getSet().size() == 1) {
+                wildCardList.add("*");
+            }
+        }
+    }
+
 }
