@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.math.*;
 
 
 /**
@@ -9,6 +10,7 @@ public class Tuple {
     
     private int size;
     private ArrayList<Object> set;
+    private String[] wildCards;
     
     
     /**
@@ -18,6 +20,7 @@ public class Tuple {
     public Tuple(Object...objects) {
         this.size = objects.length;
         this.set = new ArrayList<>();
+        this.wildCards = new String[(int) Math.pow(2, objects.length) - 1];
         for (Object o: objects) {
             this.set.add(o);
         }
@@ -61,3 +64,43 @@ public class Tuple {
         return true;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

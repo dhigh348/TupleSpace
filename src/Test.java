@@ -12,15 +12,17 @@ public class Test {
     public static void main(String[] args) {
         TupleSpace ts = new TupleSpace(6);
         Tuple tuple = null;
-        
-        for (int i = 0; i < 500; i++) {
+
+        long time1 = System.currentTimeMillis();
+        for (int i = 0; i < 100000; i++) {
             if (i % 5 == 0) {
-                tuple = new Tuple();
+                tuple = new Tuple("anna",
+                                  "filling good",
+                                  "Way to go");
             } else if (i % 5 == 1) {
                 tuple = new Tuple(("anna" + i));
             } else if (i % 5 == 2) {
-                tuple = new Tuple("anna",
-                                  "abc");
+                tuple = new Tuple("anna");
             } else if (i % 5 == 3) {
                 tuple = new Tuple("anna",
                                   "abc",
@@ -29,19 +31,18 @@ public class Test {
                 tuple = new Tuple("anna",
                                   "abc",
                                   true,
-                                  i,
                                   "Hi hows it going");
             }
             ts.add(tuple);
         }
         
-        long time1 = System.currentTimeMillis();
-        System.out.println(time1);
-        
-        ts.print();
-        
-        
         System.out.println(System.currentTimeMillis() - time1);
+//        ts.print();
+        long time2 = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(ts.remove("anna", "abc", true));
+        }
+        System.out.println(System.currentTimeMillis() - time2);
     }
 
 }

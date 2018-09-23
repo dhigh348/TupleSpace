@@ -10,10 +10,7 @@ import java.util.*;
 public class TupleSpace {
 
     private int size;
-    private List<Tuple> repository;
-    private ArrayList<String> wildCardList;
-    private HashMap<Integer, ArrayList<Tuple>> map;
-    private HashMap<String, ArrayList<Object>> obMap;
+    private HashMap<Object, ArrayList<Object>> map;
 
 
     /**
@@ -21,61 +18,38 @@ public class TupleSpace {
      */
     public TupleSpace(int size) {
         this.size = size;
-        this.repository = new LinkedList<>();
         this.map = new HashMap<>();
-        this.obMap = new HashMap<>();
     }
     
     /**
      * Adding the specified tuple to the TupleSpace repository
      */
     public void add(Tuple tuple) {
-        ArrayList<Object> temp;
-        String key = "";
-        int i = 0;
-        
-//        for (Object o: tuple.getSet()) {
-//            if (!obMap.containsKey(key)) {
-//                obMap.put(key, new ArrayList<Object>());
-//                temp = obMap.get(key);
-//                if (i == tuple.getSize()) {
-//                    temp.add(tuple);
-//                } else {
-//                    temp.add(o);
-//                }
-//            } else {
-//                temp = obMap.get(key);
-//                if (i == tuple.getSize() - 1) {
-//                    temp.add(tuple);
-//                } else {
-//                    temp.add(o);
-//                }
-//            }
-//            key += ("" + o + "");
-//            i++;
-//        }
+        ArrayList<Object> temp, checker = tuple.getSet();
+        int size = tuple.getSize();
 
-        for (Object o: tuple.getSet()) {
-            if (!obMap.containsKey(key)) {
-                obMap.put(key, new ArrayList<Object>());
-                temp = obMap.get(key);
-                if (i == tuple.getSize() - 1) {
-                    temp.add(tuple);
-                    temp.add(o);
-                } else {
-                    temp.add(o);
+        for (int i = 0; i < size; i++) {
+            if (i < size - 1) {
+                if (!map.containsKey(checker.get(i))) {
+                    map.put(checker.get(i), new ArrayList<Object>());
+                }
+
+                temp = map.get(checker.get(i));
+
+                if (!temp.contains(checker.get(i + 1))) {
+                    temp.add(checker.get(i + 1));
                 }
             } else {
-                temp = obMap.get(key);
-                if (i == tuple.getSize() - 1) {
+                if (!map.containsKey(checker.get(i))) {
+                    map.put(checker.get(i), new ArrayList<Object>());
+                }
+
+                temp = map.get(checker.get(i));
+
+                if (!temp.contains(checker.get(i))) {
                     temp.add(tuple);
-                    temp.add(o);
-                } else {
-                    temp.add(o);
                 }
             }
-            key += ("" + o + "");
-            i++;
         }
     }
     
@@ -86,14 +60,6 @@ public class TupleSpace {
      */
     public Tuple read(Object...objects) {
         Tuple tuple = null;
-        
-        for (Tuple t: repository) {
-            if (t.getSize() == objects.length) {
-                if (t.checkPattern(objects)) {
-                    tuple = t;
-                }
-            }
-        }
         
         return tuple;
     }
@@ -106,21 +72,58 @@ public class TupleSpace {
     public Tuple remove(Object...objects) {
         Random rand = new Random();
         Tuple tuple = null;
-        
-        if (map.containsKey(objects.length)) {
-            ArrayList<Tuple> list = map.get(objects.length);
-            int number = rand.nextInt(list.size());
-            tuple = list.get(number);
-            list.remove(number);
+        ArrayList<Object> temp;
+
+        if (map.containsKey(objects[0])) {
+            ArrayList<Object> subList = new ArrayList<>();
+            temp = map.get(objects[0]);
+            int randomPos = rand.nextInt(temp.size());
+
+            for (int i = 1; i < objects.length; i++) {
+                subList.add(objects[i]);
+            }
+            remove(subList);
+
+            Class classCheck = temp.get(randomPos).getClass();
+            while (classCheck != Tuple.class) {
+                randomPos = rand.nextInt(temp.size());
+                classCheck = temp.get(randomPos).getClass();
+            }
+            tuple = (Tuple)temp.get(randomPos);
+            temp.remove(randomPos);
         }
-        
+
         return tuple;
     }
     
     // printer
     public void print() {
-        for (Map.Entry<String, ArrayList<Object>> map: obMap.entrySet()) {
+        for (Map.Entry<Object, ArrayList<Object>> map: map.entrySet()) {
             System.out.println(map.getKey() + " = " +  map.getValue());
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
