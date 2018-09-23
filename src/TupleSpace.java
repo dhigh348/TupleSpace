@@ -12,9 +12,9 @@ public class TupleSpace {
     private int size;
     private HashMap<Object, ArrayList<Object>> map;
 
-
     /**
      * Constructor for the TupleSpace
+     * @param size of the tuples
      */
     public TupleSpace(int size) {
         this.size = size;
@@ -59,9 +59,7 @@ public class TupleSpace {
      * @return tuple to print
      */
     public Tuple read(Object...objects) {
-        Tuple tuple = null;
-        
-        return tuple;
+        return checkSpace(objects);
     }
     
     
@@ -70,6 +68,15 @@ public class TupleSpace {
      * @return tuple from the repository
      */
     public Tuple remove(Object...objects) {
+        return checkSpace(objects);
+    }
+
+
+    /**
+     * Checking if the tuple space contains a Tuple with the specified values
+     * @return tuple of null or found tuple
+     */
+    private Tuple checkSpace(Object...objects) {
         Random rand = new Random();
         Tuple tuple = null;
         ArrayList<Object> temp;
@@ -92,10 +99,9 @@ public class TupleSpace {
             tuple = (Tuple)temp.get(randomPos);
             temp.remove(randomPos);
         }
-
         return tuple;
     }
-    
+
     // printer
     public void print() {
         for (Map.Entry<Object, ArrayList<Object>> map: map.entrySet()) {

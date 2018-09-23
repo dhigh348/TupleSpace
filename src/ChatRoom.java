@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ChatRoom {
 
     public static void main(String[] args) {
-        TupleSpace tupleSpace = new TupleSpace(1);
+        TupleSpace tupleSpace = new TupleSpace(5);
         Scanner scanner = new Scanner(System.in);
         Object input = new Object();
         Object valueInput = new Object();
