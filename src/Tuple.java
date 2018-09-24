@@ -46,6 +46,15 @@ public class Tuple {
     
     
     /**
+     * Printing out the object list
+     */
+    public void printObjects() {
+        System.out.println(this.getSet());
+        System.out.println();
+    }
+    
+    
+    /**
      * Checking if the tuple pattern is a match for the pattern being searched for
      * @return true if the same and false otherwise
      */
