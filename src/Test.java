@@ -75,8 +75,6 @@ public class Test {
             }
         }
         
-        ts.printMap();
-        
         System.out.println("TimeOne: " + (System.currentTimeMillis() - time1) +
                                "\n");
         long time2 = System.currentTimeMillis();
