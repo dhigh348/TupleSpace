@@ -27,7 +27,6 @@ public class TupleSpace {
      */
     public void add(Tuple tuple) {
         int tupleSize = tuple.getSize();
-        TupleNode tNode = null;
         ArrayList<Object> tupleObjects = tuple.getSet();
         HashMap<Object, TupleNode> temp = map;
         
@@ -36,11 +35,9 @@ public class TupleSpace {
             
             if (!temp.containsKey(obj)) {
                 temp.put(obj, new TupleNode(obj));
-                tNode = temp.get(obj);
-                temp = tNode.getNodes();
+                temp = temp.get(obj).getNodes();
             } else {
-                tNode = temp.get(obj);
-                temp = tNode.getNodes();
+                temp = temp.get(obj).getNodes();
             }
         }
         
@@ -54,23 +51,7 @@ public class TupleSpace {
      * Returning the individual tuple from the repository
      * @return tuple to print
      */
-    public Tuple read(Object...objects) {
-        Tuple tuple = null;
-        HashMap<Object, TupleNode> temp = map;
-        TupleNode tupleNode = null;
-        
-        for (Object o: objects) {
-            if (!temp.containsKey(o)) {
-                return tuple;
-            } else {
-                temp = temp.get(o).getNodes();
-                tupleNode = temp.get(o);
-            }
-        }
-        
-        
-        return tuple;
-    }
+    public Tuple read(Object...objects) { return checkSpace(objects); }
     
     
     /**
@@ -86,30 +67,26 @@ public class TupleSpace {
      * Checking if the tuple space contains a Tuple with the specified values
      * @return tuple of null or found tuple
      */
-    private Tuple checkSpace(Object object) {
-        Random rand = new Random();
-        Tuple tuple = null;
-        ArrayList<Object> temp;
-
-//            if (map.containsKey(objects[0])) {
-//                ArrayList<Object> subList = new ArrayList<>();
-//                temp = map.get(objects[0]);
-//                int randomPos = rand.nextInt(temp.size());
-//
-//                for (int i = 1; i < objects.length; i++) {
-//                    subList.add(objects[i]);
-//                }
-//                checkSpace(subList);
-//
-//                Class classCheck = temp.get(randomPos).getClass();
-//                while (classCheck != Tuple.class) {
-//                    randomPos = rand.nextInt(temp.size());
-//                    classCheck = temp.get(randomPos).getClass();
-//                }
-//                tuple = (Tuple) temp.get(randomPos);
-//                temp.remove(randomPos);
-//            }
-        return tuple;
+    private Tuple checkSpace(Object...objects) {
+        HashMap<Object, TupleNode> temp = map;
+    
+        for (Object o: objects) {
+            if (temp.containsKey(o)) {
+                temp = temp.get(o).getNodes();
+            } else {
+                return null;
+            }
+        }
+    
+        for (Object o: temp.keySet()) {
+            if (o.getClass().equals(Tuple.class)) {
+                Tuple tuple = (Tuple) temp.get(o).getObject();
+                temp.remove(o);
+                return tuple;
+            }
+        }
+    
+        return null;
     }
     
     public void printMap() {

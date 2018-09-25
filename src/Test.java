@@ -16,24 +16,58 @@ public class Test {
         ArrayList<Tuple> tupleList = new ArrayList<>();
 
         long time1 = System.currentTimeMillis();
-        for (int i = 0; i < 10; i++) {
-            if (i % 5 == 0) {
+        for (int i = 0; i < 1000000; i++) {
+            if (i % 10 == 0) {
                 tuple = new Tuple("anna",
                                   "filling good",
                                   "Way to go");
-            } else if (i % 5 == 1) {
+            } else if (i % 10 == 1) {
                 tuple = new Tuple("anna");
-            } else if (i % 5 == 2) {
-                tuple = new Tuple("anna" + i, "cool", "why");
-            } else if (i % 5 == 3) {
+            } else if (i % 10 == 2) {
+                tuple = new Tuple("anna" + i, "cool",
+                                  "why");
+            } else if (i % 10 == 3) {
                 tuple = new Tuple("anna",
                                   "abc",
                                   true);
-            } else if (i % 5 == 4) {
+            } else if (i % 10 == 4) {
                 tuple = new Tuple("anna",
                                   "abc",
                                   true,
                                   "Hi hows it going");
+            } else if (i % 10 == 5) {
+                tuple = new Tuple("cole",
+                                  "abc",
+                                  false,
+                                  "Hi hows it going");
+            }else if (i % 10 == 6) {
+                tuple = new Tuple("sheela",
+                                  "abc",
+                                  true,
+                                  "Hi hows it going");
+            }else if (i % 10 == 7) {
+                tuple = new Tuple("anna",
+                                  "abc",
+                                  true,
+                                  " why",
+                                  8,
+                                  8.7,
+                                  'c');
+            }else if (i % 10 == 8) {
+                tuple = new Tuple("bill",
+                                  "abc",
+                                  13.56,
+                                  "Hi hows it going",
+                                  "yello",
+                                  101);
+            }else if (i % 10 == 9) {
+                tuple = new Tuple("bob",
+                                  "abc",
+                                  123458679,
+                                  "Hi hows it going",
+                                  true,
+                                  5,
+                                  'c');
             }
             
             if (tuple != null) {
@@ -46,16 +80,24 @@ public class Test {
         System.out.println("TimeOne: " + (System.currentTimeMillis() - time1) +
                                "\n");
         long time2 = System.currentTimeMillis();
-        for (int i = 0; i < 5; i++) {
-            tupleList.add(ts.read("anna", "filling good", "Way to go"));
+        for (int i = 0; i < 10000; i++) {
+            Tuple tup = ts.read("bob",
+                                "abc",
+                                123458679,
+                                "Hi hows it going",
+                                true,
+                                5,
+                                'c');
+            if (tup != null) {
+                tupleList.add(tup);
+            }
         }
         
+        System.out.println(tupleList.size());
         for (Tuple t: tupleList) {
             ts.add(t);
         }
-
-        System.out.println("++++++++++++++++");
-
+        
         System.out.println("TimeTwo: " + (System.currentTimeMillis() - time2) +
                                "\n");
     }
