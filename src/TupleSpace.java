@@ -88,10 +88,6 @@ public class TupleSpace {
     
         return null;
     }
-    
-    public void printMap() {
-    
-    }
 }
 
 

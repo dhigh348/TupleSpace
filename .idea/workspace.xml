@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="Final Trie with TupleNodes complete for adding.">
+    <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="Final TupleSpace trie implementation with read, remove and add working.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TupleSpace.java" afterPath="$PROJECT_DIR$/src/TupleSpace.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -76,8 +75,8 @@
       <file leaf-file-name="TupleSpace.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="71" column="4" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+            <state relative-caret-position="1232">
+              <caret line="90" column="1" lean-forward="true" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -330,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537898026107</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Final TupleSpace trie implementation with read, remove and add working.">
+      <created>1537900665107</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537900665107</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -409,7 +415,8 @@
     <MESSAGE value="Removing Users.java" />
     <MESSAGE value="Simple restructuring." />
     <MESSAGE value="Final Trie with TupleNodes complete for adding." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Trie with TupleNodes complete for adding." />
+    <MESSAGE value="Final TupleSpace trie implementation with read, remove and add working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Final TupleSpace trie implementation with read, remove and add working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -647,8 +654,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="71" column="4" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+        <state relative-caret-position="1232">
+          <caret line="90" column="1" lean-forward="true" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
           <folding />
         </state>
       </provider>
