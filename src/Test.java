@@ -12,7 +12,7 @@ public class Test {
      */
     public static void main(String[] args) {
         TupleSpace ts = new TupleSpace(6);
-        Tuple tuple = null;
+        Tuple tuple = new Tuple("orange");
         ArrayList<Tuple> tupleList = new ArrayList<>();
 
         long time1 = System.currentTimeMillis();
@@ -22,9 +22,9 @@ public class Test {
                                   "filling good",
                                   "Way to go");
             } else if (i % 5 == 1) {
-                tuple = new Tuple(("anna"));
+                tuple = new Tuple("anna");
             } else if (i % 5 == 2) {
-                tuple = new Tuple("anna", "cool", "why");
+                tuple = new Tuple("anna" + i, "cool", "why");
             } else if (i % 5 == 3) {
                 tuple = new Tuple("anna",
                                   "abc",
@@ -35,27 +35,29 @@ public class Test {
                                   true,
                                   "Hi hows it going");
             }
-            ts.add(tuple);
+            
+            if (tuple != null) {
+                ts.add(tuple);
+            }
         }
         
         ts.printMap();
         
-        System.out.println(System.currentTimeMillis() - time1);
+        System.out.println("TimeOne: " + (System.currentTimeMillis() - time1) +
+                               "\n");
         long time2 = System.currentTimeMillis();
         for (int i = 0; i < 5; i++) {
             tupleList.add(ts.read("anna", "filling good", "Way to go"));
         }
         
-        System.out.println(tupleList);
-        
         for (Tuple t: tupleList) {
-            t.printObjects();
             ts.add(t);
         }
 
         System.out.println("++++++++++++++++");
 
-        System.out.println(System.currentTimeMillis() - time2);
+        System.out.println("TimeTwo: " + (System.currentTimeMillis() - time2) +
+                               "\n");
     }
 
 }

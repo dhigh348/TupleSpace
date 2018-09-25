@@ -10,8 +10,7 @@ import java.util.*;
 public class TupleSpace {
 
     private int size;
-    private HashMap<Object, ArrayList<Object>> map;
-    private HashMap<Object, HashMap<Object, ArrayList<Object>>> obMap;
+    private HashMap<Object, TupleNode> map;
 
     /**
      * Constructor for the TupleSpace
@@ -21,61 +20,34 @@ public class TupleSpace {
         this.size = size;
         this.map = new HashMap<>();
     }
-    
-    /**
-     * Adding the specified tuple to the TupleSpace repository
-     */
-//    public void add(Tuple tuple) {
-//        ArrayList<Object> temp, checker = tuple.getSet();
-//        int size = tuple.getSize();
-//
-//        for (int i = 0; i < size; i++) {
-//            if (i < size - 1) {
-//                if (!map.containsKey(checker.get(i))) {
-//                    map.put(checker.get(i), new ArrayList<Object>());
-//                }
-//
-//                temp = map.get(checker.get(i));
-//
-//                if (!temp.contains(checker.get(i + 1))) {
-//                    temp.add(checker.get(i + 1));
-//                }
-//            } else {
-//                if (!map.containsKey(checker.get(i))) {
-//                    map.put(checker.get(i), new ArrayList<Object>());
-//                }
-//
-//                temp = map.get(checker.get(i));
-//
-//                if (!temp.contains(checker.get(i))) {
-//                    temp.add(tuple);
-//                }
-//            }
-//        }
-//    }
 
 
     /**
      * Adding the specified tuple to the TupleSpace repo
      */
     public void add(Tuple tuple) {
-        if (tuple.getSize() > 0) {
-            if (!obMap.containsKey(tuple.getSet().get(0))) {
-                obMap.put(tuple.getSet().get(0), new HashMap<>());
-
+        int tupleSize = tuple.getSize();
+        TupleNode tNode = null;
+        ArrayList<Object> tupleObjects = tuple.getSet();
+        HashMap<Object, TupleNode> temp = map;
+        
+        for (int i = 0; i < tupleSize; i++) {
+            Object obj = tupleObjects.get(i);
+            
+            if (!temp.containsKey(obj)) {
+                temp.put(obj, new TupleNode(obj));
+                tNode = temp.get(obj);
+                temp = tNode.getNodes();
+            } else {
+                tNode = temp.get(obj);
+                temp = tNode.getNodes();
             }
         }
-
+        
+        if (!temp.containsKey(tuple)) {
+            temp.put(tuple, new TupleNode(tuple));
+        }
     }
-
-//    private void insert(HashMap<Object, ArrayList<Object>> mapHolder,
-//                        Tuple tuple,
-//                        ArrayList<Object> objects) {
-//        HashMap<Object, HashMap<Object, ArrayList<Object>>> temp;
-//        ArrayList<Object> subList = new ArrayList<>();
-//
-//
-//    }
     
     
     /**
@@ -83,7 +55,21 @@ public class TupleSpace {
      * @return tuple to print
      */
     public Tuple read(Object...objects) {
-        return checkSpace(objects);
+        Tuple tuple = null;
+        HashMap<Object, TupleNode> temp = map;
+        TupleNode tupleNode = null;
+        
+        for (Object o: objects) {
+            if (!temp.containsKey(o)) {
+                return tuple;
+            } else {
+                temp = temp.get(o).getNodes();
+                tupleNode = temp.get(o);
+            }
+        }
+        
+        
+        return tuple;
     }
     
     
@@ -127,9 +113,7 @@ public class TupleSpace {
     }
     
     public void printMap() {
-        for (Map.Entry<Object, ArrayList<Object>> m: map.entrySet()) {
-            System.out.println(m.getKey() + " = " + m.getValue());
-        }
+    
     }
 }
 
