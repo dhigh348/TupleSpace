@@ -26,18 +26,14 @@ public class TupleNode {
      * Returning the node from the tree
      * @return node of the map
      */
-    public HashMap<Object, TupleNode> getNodes() {
-        return this.nodes;
-    }
+    public HashMap<Object, TupleNode> getNodes() { return this.nodes; }
     
     
     /**
      * Returning the Object data from the node
      * @return object data
      */
-    public Object getObject() {
-        return this.object;
-    }
+    public Object getObject() { return this.object; }
 }
 
 

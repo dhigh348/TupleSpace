@@ -58,7 +58,7 @@ public class Test {
                                   "abc",
                                   13.56,
                                   "Hi hows it going",
-                                  "yello",
+                                  "yellow",
                                   101);
             }else if (i % 10 == 9) {
                 tuple = new Tuple("bob",
@@ -69,27 +69,22 @@ public class Test {
                                   5,
                                   'c');
             }
-            
-            if (tuple != null) {
-                ts.add(tuple);
-            }
+            ts.add(tuple);
         }
         
         System.out.println("TimeOne: " + (System.currentTimeMillis() - time1) +
                                "\n");
         long time2 = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            Tuple tup = ts.read("bob",
+        for (int i = 0; i < 1000; i++) {
+            Tuple tup = ts.read("anna",
                                 "abc",
-                                123458679,
-                                "Hi hows it going",
-                                true,
-                                5,
-                                'c');
+                                true);
             if (tup != null) {
-                tupleList.add(tup);
+                System.out.println(tup + " = " + tup.getSet());
             }
         }
+        
+        System.out.println(ts.remove("anna39052", "*", "*"));
         
         System.out.println(tupleList.size());
         for (Tuple t: tupleList) {

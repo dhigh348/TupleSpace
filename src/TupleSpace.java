@@ -63,13 +63,14 @@ public class TupleSpace {
     }
 
 
+
     /**
      * Checking if the tuple space contains a Tuple with the specified values
      * @return tuple of null or found tuple
      */
     private Tuple checkSpace(Object...objects) {
         HashMap<Object, TupleNode> temp = map;
-    
+        
         for (Object o: objects) {
             if (temp.containsKey(o)) {
                 temp = temp.get(o).getNodes();
@@ -77,7 +78,7 @@ public class TupleSpace {
                 return null;
             }
         }
-    
+        
         for (Object o: temp.keySet()) {
             if (o.getClass().equals(Tuple.class)) {
                 Tuple tuple = (Tuple) temp.get(o).getObject();
@@ -85,15 +86,33 @@ public class TupleSpace {
                 return tuple;
             }
         }
-    
         return null;
     }
+
+    
+    /**
+     * Getting a tuple using the object parameters that contain wildcards
+     * @return tuple from the map
+     */
+    private Tuple getWildTuples() {
+
+        return null;
+    }
+    
+    
+    /**
+     * Checking if the objects list contains a wildcard character
+     * @return true if contains, false otherwise
+     */
+    private boolean hasWildCard(Object...objects) {
+        for (Object o: objects) {
+            if (o.equals("*")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
-
-
-
-
-
 
 
 
