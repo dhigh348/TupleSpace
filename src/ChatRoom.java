@@ -1,26 +1,24 @@
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class ChatRoom {
+/**
+ * ChatRoom.java
+ */
+public class ChatRoom extends Application {
 
-    public static void main(String[] args) {
-        TupleSpace tupleSpace = new TupleSpace(5);
-        Scanner scanner = new Scanner(System.in);
-        Object input = new Object();
-        Object valueInput = new Object();
-
-        System.out.print("Enter the chat room (Y/N)?: ");
-        input = scanner.next();
-        System.out.println();
-
-        while (((String) input).equalsIgnoreCase("Y")) {
-            System.out.print("Enter a value: ");
-            valueInput = scanner.next();
-            System.out.println();
-
-            System.out.print("Continue (Y/N)");
-            input = scanner.next();
-            System.out.println();
-        }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Chat Room");
+        primaryStage.setMinWidth(400);
+        primaryStage.setMaxWidth(400);
+        primaryStage.setMinHeight(600);
+        primaryStage.setMaxHeight(600);
+    
+        VBox vbox = new VBox();
+        Scene scene = new Scene(vbox);
+        primaryStage.setScene(scene);
     }
 
 }

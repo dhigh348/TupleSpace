@@ -10,7 +10,6 @@ public class Tuple {
     
     private int size;
     private ArrayList<Object> set;
-    private String[] wildCards;
     
     
     /**
@@ -20,7 +19,6 @@ public class Tuple {
     public Tuple(Object...objects) {
         this.size = objects.length;
         this.set = new ArrayList<>();
-        this.wildCards = new String[(int) Math.pow(2, objects.length) - 1];
         for (Object o: objects) {
             this.set.add(o);
         }
@@ -39,6 +37,14 @@ public class Tuple {
      * @return number of parameters of the tuple
      */
     public int getSize() { return this.size; }
+    
+    
+    //printing the tuple
+    public void printTuple() {
+        for (Object o: this.getSet()) {
+            System.out.println(o);
+        }
+    }
 }
 
 
