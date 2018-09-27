@@ -12,7 +12,7 @@ public class Test {
      */
     public static void main(String[] args) {
         TupleSpace ts = new TupleSpace(6);
-        Tuple tuple = new Tuple("orange");
+        Tuple tuple = new Tuple();
         ArrayList<Tuple> tupleList = new ArrayList<>();
 
         long time1 = System.currentTimeMillis();
@@ -75,15 +75,17 @@ public class Test {
             Tuple tup = ts.read("anna",
                                 "abc",
                                 true);
+            tuple = tup;
             if (tup != null) {
                 tupleList.add(tup);
             }
         }
         
-        tuple = ts.remove("*", "abc", "*");
+        for (int i = 0; i < 500; i++) {
+            ts.remove("*", "abc", "*", "*");
+        }
         tuple.printTuple();
         
-        System.out.println(tupleList.size());
         for (Tuple t: tupleList) {
             ts.add(t);
         }

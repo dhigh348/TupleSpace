@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 
@@ -28,7 +27,8 @@ public class TupleSpace {
 
 
     /**
-     * Adding the specified tuple to the TupleSpace repo
+     * Adding the specified tuple to the TupleSpace repository
+     * @param tuple to add to the TupleSpace
      */
     public void add(Tuple tuple) {
         int tupleSize = tuple.getSize();
@@ -54,6 +54,7 @@ public class TupleSpace {
     
     /**
      * Returning the individual tuple from the repository
+     * @param objects to search for
      * @return tuple to print
      */
     public Tuple read(Object...objects) {
@@ -67,6 +68,7 @@ public class TupleSpace {
     
     /**
      * Returning and removing the tuple from the repository.
+     * @param objects to search for
      * @return tuple from the repository
      */
     public Tuple remove(Object...objects) {
@@ -81,6 +83,7 @@ public class TupleSpace {
 
     /**
      * Checking if the tuple space contains a Tuple with the specified values
+     * @param objects to search for
      * @return tuple of null or found tuple
      */
     private Tuple checkSpace(Object...objects) {
@@ -106,7 +109,10 @@ public class TupleSpace {
     
     
     /**
-     * Check space two
+     * Returning a tuple from wildcard parameters
+     * @param check map of the current level from the TupleSpace map
+     * @param objects to search for
+     * @return tuple from the space
      */
     private Tuple checkSpace(HashMap<Object, TupleNode> check,
                              Object...objects) {
@@ -147,6 +153,7 @@ public class TupleSpace {
     
     /**
      * Getting a tuple using the object parameters that contain wildcards
+     * @param tupMap level to get the tuples from
      * @return tuple from the map
      */
     private Tuple getTuple(HashMap<Object, TupleNode> tupMap) {
@@ -163,6 +170,7 @@ public class TupleSpace {
     
     /**
      * Checking if the objects list contains a wildcard character
+     * @param objects to check for wildcard parameters
      * @return true if contains, false otherwise
      */
     private boolean hasWildCard(Object...objects) {
