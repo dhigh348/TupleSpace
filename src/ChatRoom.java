@@ -3,7 +3,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -25,10 +24,8 @@ public class ChatRoom {
     private VBox chatRoomLayout = new VBox();
     private TextField textField = new TextField();
     private Text userList = new Text(), messages = new Text();
-
-    private ListView<User> users = new ListView<>();
-
     private Label userLabel = new Label();
+    
     private Background blue = new Background(new BackgroundFill(Color.BLUE,
                                                                 CornerRadii
                                                                     .EMPTY,
@@ -87,12 +84,19 @@ public class ChatRoom {
     }
 
 
+    /***********************************************************************/
+    /*                          Layout Functions                           */
+    /***********************************************************************/
+
+
     /**
      * Make the box to contain the buttons to get all and active users
      */
     private void makeUserBox() {
         userInfoBox.setMinWidth(390);
         userInfoBox.setMinHeight(100);
+        userInfoBox.setSpacing(5);
+        userInfoBox.setAlignment(Pos.CENTER);
         userInfoBox.getChildren().addAll(activeUsersButton,
                                          addButton,
                                          allUsersButton);
@@ -129,6 +133,8 @@ public class ChatRoom {
     private void makeMessageEnterBox() {
         enterMessageBox.setMinHeight(100);
         enterMessageBox.setMinWidth(390);
+        enterMessageBox.setSpacing(5);
+        enterMessageBox.setAlignment(Pos.CENTER);
         enterMessageBox.getChildren().addAll(textField, sendButton);
     }
 
@@ -162,13 +168,17 @@ public class ChatRoom {
         chatRoomLayout.setMinHeight(primaryStage.getMinHeight());
         chatRoomLayout.setMinWidth(primaryStage.getMinWidth());
         chatRoomLayout.setBackground(grey);
-        chatRoomLayout.setAlignment(Pos.CENTER);
         chatRoomLayout.getChildren().addAll(userLabel,
                                             userInfoBox,
                                             dispUsers,
                                             dispMessages,
                                             enterMessageBox);
     }
+    
+    
+    /***********************************************************************/
+    /*                          Button Functions                           */
+    /***********************************************************************/
 
 
     /**
@@ -179,7 +189,6 @@ public class ChatRoom {
         allUsersButton.setMaxWidth(100);
         allUsersButton.setMinHeight(50);
         allUsersButton.setMaxHeight(50);
-        allUsersButton.setAlignment(Pos.CENTER);
         allUsersButton.setOnAction(e -> {
             System.out.println("All users button click.");
         });
@@ -194,7 +203,6 @@ public class ChatRoom {
         activeUsersButton.setMaxHeight(50);
         activeUsersButton.setMaxWidth(100);
         activeUsersButton.setMinWidth(100);
-        activeUsersButton.setAlignment(Pos.CENTER_LEFT);
         activeUsersButton.setOnAction(e -> {
             System.out.println("Active users button click.");
         });
@@ -205,13 +213,10 @@ public class ChatRoom {
      * Adding "add user" button to the stage
      */
     private void makeAddUserButton() {
-        addButton.setTextFill(Color.WHITE);
         addButton.setMinWidth(100);
         addButton.setMaxWidth(100);
         addButton.setMinHeight(50);
         addButton.setMaxHeight(50);
-        addButton.setAlignment(Pos.CENTER_RIGHT);
-        addButton.setBackground(blue);
         addButton.setOnAction(e -> {
             System.out.println("Add users button click.");
         });
@@ -223,11 +228,11 @@ public class ChatRoom {
      */
     private void makeSendButton() {
         sendButton.setTextFill(Color.WHITE);
-        sendButton.setBackground(blue);
         sendButton.setMinWidth(100);
         sendButton.setMaxWidth(100);
         sendButton.setMaxHeight(50);
         sendButton.setMinHeight(50);
+        sendButton.setBackground(blue);
         sendButton.setOnAction(e -> {
             System.out.println("Send button click.");
         });
