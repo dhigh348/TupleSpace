@@ -74,10 +74,10 @@ public class Test {
         
         
         long time2 = System.currentTimeMillis();
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 10000; i++) {
             tuple = ts.read("*", "abc", "*", "*");
-            tuple.printTuple();
-            System.out.println(tuple + "\n");
+//            tuple.printTuple();
+//            System.out.println(tuple + "\n");
         }
         System.out.println("After Read: " +
                                (System.currentTimeMillis() - time2) + "\n");
@@ -86,10 +86,16 @@ public class Test {
         
         
         long time3 = System.currentTimeMillis();
-        for (int i = 0; i < 1000; i++) {
-            tuple = ts.remove("*", "abc", "*", "*");
-            tuple.printTuple();
-            System.out.println(tuple + "\n");
+        for (int i = 0; i < 10000; i++) {
+            tuple = ts.remove("*", "*", "*", "Hi hows it going");
+            if (tuple != null) {
+//                tupleList.add(tuple);tuple.printTuple();
+//                System.out.println(tuple + "\n");
+            }
+        }
+        
+        for (Tuple t: tupleList) {
+            ts.add(t);
         }
         System.out.println("After Remove: " +
                                (System.currentTimeMillis() - time3) + "\n");

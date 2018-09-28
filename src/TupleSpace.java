@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -136,26 +135,32 @@ public class TupleSpace {
                         if (objects.length > 1) {
                             if (!objects[1].equals("*")) {
                                 if (temp.containsKey(objects[1])){
-                                    tuple = checkSpace(removeTup, temp, subList);
-//                                    check.remove(o);
+                                    tuple = checkSpace(removeTup,
+                                                       temp,
+                                                       subList);
                                 }
                             } else if (objects[1].equals("*")) {
-                                tuple = checkSpace(removeTup, temp, subList);
-//                                check.remove(o);
+                                tuple = checkSpace(removeTup,
+                                                   temp,
+                                                   subList);
                             }
                         } else {
-                            tuple = getTuple(temp, removeTup);
-//                            check.remove(o);
+                            tuple = getTuple(temp,
+                                             removeTup);
                         }
+                    } else {
+                        return tuple;
                     }
                 }
             } else {
                 temp = check.get(objects[0]).getNodes();
-                tuple = checkSpace(removeTup, temp, subList);
-//                check.remove(objects[0]);
+                tuple = checkSpace(removeTup,
+                                   temp,
+                                   subList);
             }
         } else {
-            tuple = getTuple(check, removeTup);
+            tuple = getTuple(check,
+                             removeTup);
         }
         return tuple;
     }
@@ -167,18 +172,6 @@ public class TupleSpace {
      * @return tuple from the map
      */
     private Tuple getTuple(HashMap<Object, TupleNode> tupMap, Boolean remove) {
-//        ArrayList<Object> list = new ArrayList<>();
-//        list.addAll(tupMap.keySet());
-//        Collections.shuffle(list);
-//        for (Object o: list) {
-//            if (o.getClass().equals(Tuple.class)) {
-//                Tuple tuple = (Tuple) tupMap.get(o).getObject();
-//                if (remove) {
-//                    tupMap.remove(o);
-//                }
-//                return tuple;
-//            }
-//        }
         Random rand = new Random();
         Tuple tuple = null;
         Object obj;
@@ -187,7 +180,7 @@ public class TupleSpace {
         if (tupMap.keySet().isEmpty()) {
             return tuple;
         }
-        
+
         objList.addAll(tupMap.keySet());
         obj = objList.get(rand.nextInt(objList.size()));
 
@@ -200,12 +193,12 @@ public class TupleSpace {
             while (!obj.getClass().equals(Tuple.class) && objList.size() > 0) {
                 obj = objList.get(rand.nextInt(objList.size()));
                 objList.remove(obj);
-        
+
                 if (obj.getClass().equals(Tuple.class)) {
                     tuple = (Tuple) obj;
                 }
             }
-    
+
             if (remove) {
                 tupMap.remove(tuple);
             }
