@@ -16,7 +16,7 @@ public class Test {
         ArrayList<Tuple> tupleList = new ArrayList<>();
 
         long time1 = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 100000; i++) {
             if (i % 10 == 0) {
                 tuple = new Tuple("anna",
                                   "filling good",
@@ -24,7 +24,8 @@ public class Test {
             } else if (i % 10 == 1) {
                 tuple = new Tuple("anna");
             } else if (i % 10 == 2) {
-                tuple = new Tuple("anna", "cool",
+                tuple = new Tuple("anna",
+                                  "cool",
                                   "why");
             } else if (i % 10 == 3) {
                 tuple = new Tuple("anna",
@@ -67,31 +68,31 @@ public class Test {
             }
             ts.add(tuple);
         }
+        System.out.println("After Add: " +
+                               (System.currentTimeMillis() - time1) + "\n");
         
-        System.out.println("TimeOne: " + (System.currentTimeMillis() - time1) +
-                               "\n");
+        
+        
         long time2 = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            Tuple tup = ts.read("anna",
-                                "abc",
-                                true);
-            tuple = tup;
-            if (tup != null) {
-                tupleList.add(tup);
-            }
+        for (int i = 0; i < 5000; i++) {
+            tuple = ts.read("*", "abc", "*", "*");
+            tuple.printTuple();
+            System.out.println(tuple + "\n");
         }
+        System.out.println("After Read: " +
+                               (System.currentTimeMillis() - time2) + "\n");
         
-        for (int i = 0; i < 500; i++) {
-            ts.remove("*", "abc", "*", "*");
+        
+        
+        
+        long time3 = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            tuple = ts.remove("*", "abc", "*", "*");
+            tuple.printTuple();
+            System.out.println(tuple + "\n");
         }
-        tuple.printTuple();
-        
-        for (Tuple t: tupleList) {
-            ts.add(t);
-        }
-        
-        System.out.println("TimeTwo: " + (System.currentTimeMillis() - time2) +
-                               "\n");
+        System.out.println("After Remove: " +
+                               (System.currentTimeMillis() - time3) + "\n");
     }
 
 }

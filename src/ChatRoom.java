@@ -2,10 +2,8 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -15,7 +13,9 @@ import javafx.stage.Stage;
 public class ChatRoom {
 
     private Button addButton, sendButton;
-    private Background blue = new Background(new BackgroundFill(Color.BLUE,
+    private HBox userBox;
+    private TextField textField;
+    private Background blue = new Background(new BackgroundFill(Color.WHITESMOKE,
                                                                 CornerRadii
                                                                     .EMPTY,
                                                                 Insets.EMPTY));
