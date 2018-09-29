@@ -218,23 +218,6 @@ public class ChatRoom {
     /***********************************************************************/
     /*                          Button Functions                           */
     /***********************************************************************/
-
-    
-    /**
-     * Setting the text field of the interface
-     */
-    public void setTextField() {
-        LinkedList<Tuple> list = this.controller.getMessageStack();
-        String text = "";
-        
-        this.messages.setText("");
-        for (Tuple t: list) {
-            text += (t.printTuple() + "\n");
-        }
-        
-        this.messages.setTextAlignment(TextAlignment.LEFT);
-        this.messages.setText(text);
-    }
     
 
     /**
@@ -253,7 +236,7 @@ public class ChatRoom {
 
             while (tuple != null){
                 System.out.println(i++);
-                tuple = this.controller.removeFromTheTupleSpace(tuple);
+                tuple = this.controller.removeFromTheTupleSpace(tuple.getSet());
                 allUsers.push(tuple);
             }
             System.out.println(allUsers);
@@ -390,5 +373,22 @@ public class ChatRoom {
         }
         setTextField();
         textField.clear();
+    }
+
+    
+    /**
+     * Setting the text field of the interface
+     */
+    public void setTextField() {
+        LinkedList<Tuple> list = this.controller.getMessageStack();
+        String text = "";
+        
+        this.messages.setText("");
+        for (Tuple t: list) {
+            text += (t.printTuple() + "\n");
+        }
+        
+        this.messages.setTextAlignment(TextAlignment.LEFT);
+        this.messages.setText(text);
     }
 }
