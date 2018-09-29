@@ -89,8 +89,8 @@ public class Test {
         for (int i = 0; i < 10000; i++) {
             tuple = ts.remove("*", "*", "*", "Hi hows it going");
             if (tuple != null) {
-//                tupleList.add(tuple);tuple.printTuple();
-//                System.out.println(tuple + "\n");
+                tupleList.add(tuple);tuple.printTuple();
+                System.out.println(tuple.printTuple());
             }
         }
         

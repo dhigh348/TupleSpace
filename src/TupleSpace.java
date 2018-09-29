@@ -31,7 +31,6 @@ public class TupleSpace {
      * @param tuple to add to the TupleSpace
      */
     public void add(Tuple tuple) {
-        System.out.println("here");
         int tupleSize = tuple.getSize();
         ArrayList<Object> tupleObjects = tuple.getSet();
         HashMap<Object, TupleNode> temp = sizeMap.get(tupleSize);

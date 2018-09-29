@@ -149,7 +149,7 @@ public class ChatRoom {
     private void makeDispUsersBox() {
         dispUsers.setMinHeight(200);
         dispUsers.setMinWidth(390);
-        dispUsers.setAlignment(Pos.CENTER);
+        dispUsers.setAlignment(Pos.TOP_LEFT);
         dispUsers.setBackground(white);
         dispUsers.setPadding(new Insets(5));
         dispUsers.getChildren().addAll(userList);
@@ -231,15 +231,28 @@ public class ChatRoom {
         allUsersButton.setOnAction(e -> {
             e.consume();
             LinkedList<Tuple> allUsers = new LinkedList<>();
-            Tuple tuple = this.controller.readFromTupleSpace("*");
-            int i = 0;
+            Tuple tuple = this.controller.readFromTupleSpace("*"), temp;
+            Object[] objList = new Object[tuple.getSize()];
 
             while (tuple != null){
-                System.out.println(i++);
-                tuple = this.controller.removeFromTheTupleSpace(tuple.getSet());
-                allUsers.push(tuple);
+                temp = this.controller.readFromTupleSpace("*");
+
+                for (int i = 0; i < objList.length; i++) {
+                    objList[0] = tuple.getSet().get(i);
+                }
+                this.controller.removeFromTheTupleSpace(objList);
+
+                tuple = temp;
+
+                if (tuple != null && !allUsers.contains(tuple)) {
+                    allUsers.push(tuple);
+                }
             }
-            System.out.println(allUsers);
+            setActiveUserText(allUsers);
+
+            for (Tuple t: allUsers) {
+                this.controller.addToTupleSpace(t);
+            }
         });
     }
 
@@ -375,7 +388,23 @@ public class ChatRoom {
         textField.clear();
     }
 
-    
+
+    /**
+     * Setting the printing of all of the users in the chat
+     */
+    public void setActiveUserText(LinkedList<Tuple> list) {
+        String text = "";
+
+        this.userList.setText("");
+        for (Tuple t: list) {
+            text += (t.printTuple() + "\n");
+        }
+
+        this.userList.setTextAlignment(TextAlignment.LEFT);
+        this.userList.setText(text);
+    }
+
+
     /**
      * Setting the text field of the interface
      */
