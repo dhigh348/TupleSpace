@@ -39,11 +39,21 @@ public class Tuple {
     public int getSize() { return this.size; }
     
     
-    //printing the tuple
-    public void printTuple() {
+    /**
+     * Printing the tuple to the console
+     */
+    public String printTuple() {
+        String tupPrint = "";
+        int i = 0;
         for (Object o: this.getSet()) {
-            System.out.println(o);
+            tupPrint += o;
+            if (i == 1) {
+                tupPrint += ": ";
+            }
+            tupPrint += " ";
+            i++;
         }
+        return tupPrint;
     }
 }
 

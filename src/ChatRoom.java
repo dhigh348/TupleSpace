@@ -6,8 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+import java.sql.Time;
+import java.util.LinkedList;
 
 /**
  * ChatRoom.java is the class that displays the gui for users of the chat room
@@ -19,12 +24,22 @@ public class ChatRoom {
     private Button sendButton = new Button("Send");
     private Button activeUsersButton = new Button("Active");
     private Button allUsersButton = new Button("All");
-    private HBox userInfoBox = new HBox(), dispUsers = new HBox();
-    private HBox dispMessages = new HBox(), enterMessageBox = new HBox();
-    private VBox chatRoomLayout = new VBox();
+    private Button changeUserButton = new Button("Change User");
+    private Controller controller;
+    
     private TextField textField = new TextField();
+    private TextField addUserTextField = new TextField();
     private Text userList = new Text(), messages = new Text();
     private Label userLabel = new Label();
+    private User currentUser = new User("Danan",
+                                        false,
+                                        new Time(System.currentTimeMillis()),
+                                        "");
+    
+    private HBox userInfoBox = new HBox(), dispUsers = new HBox();
+    private HBox dispMessages = new HBox(), enterMessageBox = new HBox();
+    private HBox userInputBox = new HBox();
+    private VBox chatRoomLayout = new VBox();
     
     private Background blue = new Background(new BackgroundFill(Color.BLUE,
                                                                 CornerRadii
@@ -42,10 +57,18 @@ public class ChatRoom {
                                                                 CornerRadii
                                                                         .EMPTY,
                                                                 Insets.EMPTY));
-    private Background orange = new Background(new BackgroundFill(Color.ORANGE,
+    private Background white = new Background(new BackgroundFill(Color.WHITE,
                                                                 CornerRadii
                                                                         .EMPTY,
                                                                 Insets.EMPTY));
+    /**
+     * Constructor for the ChatRoom
+     * @param controller for the Chat to be able to talk to the TupleSpace
+     */
+    public ChatRoom(Controller controller) {
+        this.controller = controller;
+    }
+    
 
     /**
      * Showing and making the stage for the chat room
@@ -75,7 +98,10 @@ public class ChatRoom {
         makeUserLabel();
         makeAllUsersButton();
         makeActiveUsersButton();
+        makeChangeUserButton();
+        makeUserTextField();
         makeTextField();
+        makeAddUserInputBox();
         makeUserBox();
         makeDispUsersBox();
         makeMessagesBox();
@@ -90,15 +116,29 @@ public class ChatRoom {
 
 
     /**
+     * Making the add user input box
+     */
+    private void makeAddUserInputBox() {
+        userInputBox.setMinWidth(390);
+        userInputBox.setMinHeight(50);
+        userInputBox.setPadding(new Insets(5));
+        userInputBox.setSpacing(5);
+        userInputBox.setAlignment(Pos.CENTER);
+        userInputBox.getChildren().addAll(addUserTextField, addButton);
+    }
+    
+    
+    /**
      * Make the box to contain the buttons to get all and active users
      */
     private void makeUserBox() {
         userInfoBox.setMinWidth(390);
-        userInfoBox.setMinHeight(100);
+        userInfoBox.setMinHeight(50);
+        userInfoBox.setPadding(new Insets(2));
         userInfoBox.setSpacing(5);
         userInfoBox.setAlignment(Pos.CENTER);
         userInfoBox.getChildren().addAll(activeUsersButton,
-                                         addButton,
+                                         changeUserButton,
                                          allUsersButton);
     }
 
@@ -110,7 +150,8 @@ public class ChatRoom {
         dispUsers.setMinHeight(200);
         dispUsers.setMinWidth(390);
         dispUsers.setAlignment(Pos.CENTER);
-        dispUsers.setBackground(red);
+        dispUsers.setBackground(white);
+        dispUsers.setPadding(new Insets(5));
         dispUsers.getChildren().addAll(userList);
     }
 
@@ -121,8 +162,9 @@ public class ChatRoom {
     private void makeMessagesBox() {
         dispMessages.setMinHeight(300);
         dispMessages.setMinWidth(390);
-        dispMessages.setAlignment(Pos.CENTER);
-        dispMessages.setBackground(orange);
+        dispMessages.setAlignment(Pos.TOP_LEFT);
+        dispMessages.setBackground(white);
+        dispMessages.setPadding(new Insets(5));
         dispMessages.getChildren().addAll(messages);
     }
 
@@ -133,18 +175,10 @@ public class ChatRoom {
     private void makeMessageEnterBox() {
         enterMessageBox.setMinHeight(100);
         enterMessageBox.setMinWidth(390);
+        enterMessageBox.setPadding(new Insets(5));
         enterMessageBox.setSpacing(5);
         enterMessageBox.setAlignment(Pos.CENTER);
         enterMessageBox.getChildren().addAll(textField, sendButton);
-    }
-
-
-    /**
-     * Making the text field for the users message.
-     */
-    private void makeTextField() {
-        textField.setMinWidth(290);
-        textField.setMinHeight(100);
     }
     
     
@@ -152,12 +186,13 @@ public class ChatRoom {
      * Making the user label that contains the name of the current user.
      */
     private void makeUserLabel() {
-        userLabel.setText("Test");
+        userLabel.setFont(Font.font(20));
+        userLabel.setText("");
         userLabel.setAlignment(Pos.CENTER);
         userLabel.setTextFill(Color.WHITE);
         userLabel.setMinWidth(390);
         userLabel.setMinHeight(50);
-        userLabel.setBackground(green);
+        userLabel.setBackground(white);
     }
 
     /**
@@ -167,9 +202,13 @@ public class ChatRoom {
     private void makeChatLayout(Stage primaryStage) {
         chatRoomLayout.setMinHeight(primaryStage.getMinHeight());
         chatRoomLayout.setMinWidth(primaryStage.getMinWidth());
+        chatRoomLayout.setAlignment(Pos.CENTER);
+        chatRoomLayout.setPadding(new Insets(5));
+        chatRoomLayout.setSpacing(5);
         chatRoomLayout.setBackground(grey);
         chatRoomLayout.getChildren().addAll(userLabel,
                                             userInfoBox,
+                                            userInputBox,
                                             dispUsers,
                                             dispMessages,
                                             enterMessageBox);
@@ -180,6 +219,23 @@ public class ChatRoom {
     /*                          Button Functions                           */
     /***********************************************************************/
 
+    
+    /**
+     * Setting the text field of the interface
+     */
+    public void setTextField() {
+        LinkedList<Tuple> list = this.controller.getMessageStack();
+        String text = "";
+        
+        this.messages.setText("");
+        for (Tuple t: list) {
+            text += (t.printTuple() + "\n");
+        }
+        
+        this.messages.setTextAlignment(TextAlignment.LEFT);
+        this.messages.setText(text);
+    }
+    
 
     /**
      * Making the button to get all of the users in the chat room
@@ -187,10 +243,20 @@ public class ChatRoom {
     private void makeAllUsersButton() {
         allUsersButton.setMinWidth(100);
         allUsersButton.setMaxWidth(100);
-        allUsersButton.setMinHeight(50);
-        allUsersButton.setMaxHeight(50);
+        allUsersButton.setMinHeight(40);
+        allUsersButton.setMaxHeight(40);
         allUsersButton.setOnAction(e -> {
-            System.out.println("All users button click.");
+            e.consume();
+            LinkedList<Tuple> allUsers = new LinkedList<>();
+            Tuple tuple = this.controller.readFromTupleSpace("*");
+            int i = 0;
+
+            while (tuple != null){
+                System.out.println(i++);
+                tuple = this.controller.removeFromTheTupleSpace(tuple);
+                allUsers.push(tuple);
+            }
+            System.out.println(allUsers);
         });
     }
 
@@ -199,8 +265,8 @@ public class ChatRoom {
      * Making the active users button.
      */
     private void makeActiveUsersButton() {
-        activeUsersButton.setMinHeight(50);
-        activeUsersButton.setMaxHeight(50);
+        activeUsersButton.setMinHeight(40);
+        activeUsersButton.setMaxHeight(40);
         activeUsersButton.setMaxWidth(100);
         activeUsersButton.setMinWidth(100);
         activeUsersButton.setOnAction(e -> {
@@ -215,10 +281,11 @@ public class ChatRoom {
     private void makeAddUserButton() {
         addButton.setMinWidth(100);
         addButton.setMaxWidth(100);
-        addButton.setMinHeight(50);
-        addButton.setMaxHeight(50);
+        addButton.setMinHeight(40);
+        addButton.setMaxHeight(40);
         addButton.setOnAction(e -> {
-            System.out.println("Add users button click.");
+            e.consume();
+            addUser();
         });
     }
     
@@ -230,11 +297,98 @@ public class ChatRoom {
         sendButton.setTextFill(Color.WHITE);
         sendButton.setMinWidth(100);
         sendButton.setMaxWidth(100);
-        sendButton.setMaxHeight(50);
-        sendButton.setMinHeight(50);
+        sendButton.setMaxHeight(40);
+        sendButton.setMinHeight(40);
         sendButton.setBackground(blue);
         sendButton.setOnAction(e -> {
-            System.out.println("Send button click.");
+            e.consume();
+            respondToAction();
         });
+    }
+    
+    
+    /**
+     * Making a button to change the user
+     */
+    private void makeChangeUserButton() {
+        changeUserButton.setMinWidth(100);
+        changeUserButton.setMaxWidth(100);
+        changeUserButton.setMaxHeight(40);
+        changeUserButton.setMinHeight(40);
+        changeUserButton.setOnAction(e -> {
+            this.userLabel.setText(currentUser.getName());
+            if (currentUser.getOnline()) {
+                userLabel.setBackground(green);
+            } else {
+                userLabel.setBackground(red);
+            }
+        });
+    }
+
+    
+    /**
+     * Making the text field to add a user to the tuple space
+     */
+    private void makeUserTextField() {
+        addUserTextField.setMinWidth(300);
+        addUserTextField.setMinHeight(50);
+        addUserTextField.setPromptText("Enter message here");
+        addUserTextField.setOnAction(e -> {
+            e.consume();
+            addUser();
+        });
+    }
+    
+
+    /**
+     * Making the text field for the users message.
+     */
+    private void makeTextField() {
+        textField.setMinWidth(300);
+        textField.setMinHeight(50);
+        textField.setPromptText("Enter message here");
+        textField.setOnAction(e -> {
+            e.consume();
+            respondToAction();
+        });
+    }
+    
+    
+    /**
+     * Function to add a user from the user text field to the tuple space
+     */
+    private void addUser() {
+        if (!addUserTextField.getText().isEmpty()) {
+            controller.addToTupleSpace(new Tuple(addUserTextField.getText()));
+            addUserTextField.clear();
+        }
+    }
+    
+    
+    /**
+     * Setting up actions to when the user types in a message
+     */
+    private void respondToAction() {
+        if (controller.getMessageStack().size() < 10) {
+            Tuple tuple = new Tuple(new Time(System.currentTimeMillis()),
+                                    currentUser.getName(),
+                                    textField.getText());
+            if (!textField.getText().isEmpty()) {
+                controller.getMessageStack().push(tuple);
+                controller.addToTupleSpace(tuple);
+                
+            }
+        } else {
+            if (!textField.getText().isEmpty()) {
+                Tuple tuple = new Tuple(new Time(System.currentTimeMillis()),
+                                        currentUser.getName(),
+                                        textField.getText());
+                controller.getMessageStack().removeLast();
+                controller.getMessageStack().push(tuple);
+                controller.addToTupleSpace(tuple);
+            }
+        }
+        setTextField();
+        textField.clear();
     }
 }
