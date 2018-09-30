@@ -22,11 +22,8 @@ public class Controller extends Application{
         this.tupSpace.add(new Tuple("Kyle", true));
         this.tupSpace.add(new Tuple("Diana", false));
         this.tupSpace.add(new Tuple("Kalam", true));
-        Tuple tup = tupSpace.read("*", "*");
-        this.currentUser = new User((String) tup.getSet().get(0),
-                                    (Boolean) tup.getSet().get(1),
-                                    null,
-                                    null);
+        this.userOrder = search("*", "*");
+        this.currentUser = this.userOrder.getFirst();
 
         ChatRoom chatRoom = new ChatRoom(this);
         chatRoom.show(primaryStage);
@@ -128,6 +125,29 @@ public class Controller extends Application{
      * @return current user of the tuple space
      */
     public User getCurrentUser() { return this.currentUser; }
+
+
+    /**
+     * Add a user and their message to the message stack and also rotate
+     * the turns of the users.
+     * @param message from the user
+     */
+    public void setUserMessages(String message) {
+        this.currentUser.setMessage(message);
+        this.currentUser.setTimeStamp();
+        this.messageList.addFirst(new User(this.currentUser.getName(),
+                                           this.currentUser.getOnline(),
+                                           this.currentUser.getTime(),
+                                           this.getCurrentUser().getMessage()));
+
+        if (this.messageList.size() > 10) {
+            this.messageList.removeLast();
+        }
+
+        User user = this.userOrder.removeFirst();
+        this.userOrder.addLast(user);
+        this.currentUser = this.userOrder.getFirst();
+    }
 
 
     /**

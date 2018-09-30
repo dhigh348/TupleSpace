@@ -302,6 +302,7 @@ public class ChatRoom {
             e.consume();
             respondToMessageAction();
             setTextField();
+            updateLabel();
         });
     }
 
@@ -311,12 +312,12 @@ public class ChatRoom {
      */
     private void makeTextField() {
         textField.setPrefWidth(300);
-        textField.setPrefHeight(50);
+        textField.setPrefHeight(40);
         textField.setPromptText("Enter message here...");
         textField.setOnAction(e -> {
             e.consume();
             respondToMessageAction();
-            setTextField();
+            setTextField();updateLabel();
         });
     }
 
@@ -342,7 +343,7 @@ public class ChatRoom {
      */
     private void makeUserTextField() {
         addUserTextField.setMinWidth(300);
-        addUserTextField.setMinHeight(50);
+        addUserTextField.setMinHeight(40);
         addUserTextField.setPromptText("Add user here...");
         addUserTextField.setOnAction(e -> {
             e.consume();
@@ -371,6 +372,19 @@ public class ChatRoom {
 
 
     /**
+     * Updating the label when the current user changes
+     */
+    private void updateLabel() {
+        userLabel.setText(this.controller.getCurrentUser().getName());
+        if (this.controller.getCurrentUser().getOnline()) {
+            userLabel.setBackground(green);
+        } else {
+            userLabel.setBackground(red);
+        }
+    }
+
+
+    /**
      * Function to add a user from the user text field to the tuple space
      */
     private void addUser() {
@@ -387,18 +401,10 @@ public class ChatRoom {
      * Setting up actions to when the user types in a message
      */
     private void respondToMessageAction() {
-        LinkedList<User> list = this.controller.getMessageStack();
-
-        this.controller.getMessageStack()
-                .add(0,
-                     new User(this.controller.getCurrentUser().getName(),
-                              this.controller.getCurrentUser().getOnline(),
-                              new Time(System.currentTimeMillis()),
-                              this.messages.getText()));
-
-        if (this.controller.getMessageStack().size() == 10) {
-            this.controller.getMessageStack().removeLast();
+        if (!this.textField.getText().isEmpty()) {
+            this.controller.setUserMessages(this.textField.getText());
         }
+        this.textField.clear();
     }
 
 
@@ -423,12 +429,9 @@ public class ChatRoom {
      */
     private void setTextField() {
         String text = "";
-        
-        this.messages.setText("");
+
         for (User u: this.controller.getMessageStack()) {
-            text += ("" + u.getTime() + " ");
-            text += ("" + u.getName() + ": ");
-            text += ("" + u.getMessage() + "\n");
+            text += (u.toString() + "\n");
         }
         
         this.messages.setTextAlignment(TextAlignment.LEFT);

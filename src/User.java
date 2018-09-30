@@ -82,6 +82,16 @@ public class User extends Tuple {
         Time nextTime = new Time(System.currentTimeMillis());
         this.time = nextTime;
     }
+
+
+    /**
+     * Printing functionality for the user's parameters.
+     * @return text for the messages
+     */
+    @Override
+    public String toString() {
+        return ""+ this.time + " " + this.name + ": " + this.message + "\n";
+    }
 }
 
 
