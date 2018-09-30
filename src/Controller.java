@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Controller.java is the class that manages the interactions between the
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 public class Controller extends Application{
     private TupleSpace tupSpace = new TupleSpace(5);
     private LinkedList<Tuple> messageList = new LinkedList<>();
+    private Queue<Tuple> userOrder = new LinkedList<>();
 
 
     @Override
@@ -52,20 +54,17 @@ public class Controller extends Application{
      * @return messageList of the messages
      */
     public LinkedList<Tuple> getMessageStack() { return this.messageList; }
-    
-    
-    /**
-     * Returning the list of all users in the tuple space
-     * @return list of users
-     */
-    public LinkedList<Tuple> getUsers() {
-        return messageList;
-    }
 
-/**
+
+    /**
+     * Returning the order of the list of users
+     * @return ordered list of the users
+     */
+    public Queue<Tuple> getUserOrder() { return this.userOrder; }
+
+
+    /**
      * main method to run the program
      */
-    public static void main(String[] args) throws Exception {
-        launch(args);
-    }
+    public static void main(String[] args) throws Exception { launch(args); }
 }

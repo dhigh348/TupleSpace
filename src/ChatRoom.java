@@ -3,6 +3,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -24,7 +25,6 @@ public class ChatRoom {
     private Button sendButton = new Button("Send");
     private Button activeUsersButton = new Button("Active");
     private Button allUsersButton = new Button("All");
-    private Button changeUserButton = new Button("Change User");
     private Controller controller;
     
     private TextField textField = new TextField();
@@ -98,7 +98,6 @@ public class ChatRoom {
         makeUserLabel();
         makeAllUsersButton();
         makeActiveUsersButton();
-        makeChangeUserButton();
         makeUserTextField();
         makeTextField();
         makeAddUserInputBox();
@@ -138,7 +137,6 @@ public class ChatRoom {
         userInfoBox.setSpacing(5);
         userInfoBox.setAlignment(Pos.CENTER);
         userInfoBox.getChildren().addAll(activeUsersButton,
-                                         changeUserButton,
                                          allUsersButton);
     }
 
@@ -302,33 +300,13 @@ public class ChatRoom {
         });
     }
     
-    
-    /**
-     * Making a button to change the user
-     */
-    private void makeChangeUserButton() {
-        changeUserButton.setMinWidth(100);
-        changeUserButton.setMaxWidth(100);
-        changeUserButton.setMaxHeight(40);
-        changeUserButton.setMinHeight(40);
-        changeUserButton.setOnAction(e -> {
-            this.userLabel.setText(currentUser.getName());
-            if (currentUser.getOnline()) {
-                userLabel.setBackground(green);
-            } else {
-                userLabel.setBackground(red);
-            }
-        });
-    }
-
-    
     /**
      * Making the text field to add a user to the tuple space
      */
     private void makeUserTextField() {
         addUserTextField.setMinWidth(300);
         addUserTextField.setMinHeight(50);
-        addUserTextField.setPromptText("Enter message here");
+        addUserTextField.setPromptText("Add user here...");
         addUserTextField.setOnAction(e -> {
             e.consume();
             addUser();
@@ -340,9 +318,9 @@ public class ChatRoom {
      * Making the text field for the users message.
      */
     private void makeTextField() {
-        textField.setMinWidth(300);
-        textField.setMinHeight(50);
-        textField.setPromptText("Enter message here");
+        textField.setPrefWidth(300);
+        textField.setPrefHeight(50);
+        textField.setPromptText("Enter message here...");
         textField.setOnAction(e -> {
             e.consume();
             respondToAction();
