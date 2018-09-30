@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.sql.Time;
 import java.util.LinkedList;
 
 /**
@@ -32,8 +33,8 @@ public class ChatRoom {
     private Text onlineUsers = new Text();
     private Label userLabel = new Label();
 
-    private HBox userButtonBox = new HBox(), dispUsers = new HBox();
-    private HBox dispMessages = new HBox(), messageEntryBox = new HBox();
+    private HBox userButtonBox = new HBox(), displayUsers = new HBox();
+    private HBox displayMessages = new HBox(), messageEntryBox = new HBox();
     private HBox userInputBox = new HBox(), onlineUsersBox = new HBox();
     private HBox userStatusInformationBox = new HBox();
     private VBox chatRoomLayout = new VBox();
@@ -116,9 +117,9 @@ public class ChatRoom {
     }
 
 
-    /***********************************************************************/
-    /*                          Layout Functions                           */
-    /***********************************************************************/
+    /************************************************************************
+    *                            Layout Functions                           *
+    ************************************************************************/
 
 
     /**
@@ -153,12 +154,12 @@ public class ChatRoom {
      * Making the display of the full list of users in the chat
      */
     private void makeAllUsersDisplay() {
-        dispUsers.setMinHeight(200);
-        dispUsers.setMinWidth(160);
-        dispUsers.setAlignment(Pos.TOP_LEFT);
-        dispUsers.setBackground(white);
-        dispUsers.setPadding(new Insets(5));
-        dispUsers.getChildren().addAll(userList);
+        displayUsers.setMinHeight(200);
+        displayUsers.setMinWidth(160);
+        displayUsers.setAlignment(Pos.TOP_LEFT);
+        displayUsers.setBackground(white);
+        displayUsers.setPadding(new Insets(5));
+        displayUsers.getChildren().addAll(userList);
     }
 
 
@@ -184,7 +185,7 @@ public class ChatRoom {
         userStatusInformationBox.setAlignment(Pos.CENTER);
         userStatusInformationBox.setSpacing(60);
         userStatusInformationBox.setPadding(new Insets(5));
-        userStatusInformationBox.getChildren().addAll(dispUsers,
+        userStatusInformationBox.getChildren().addAll(displayUsers,
                                                       onlineUsersBox);
     }
 
@@ -193,12 +194,12 @@ public class ChatRoom {
      * Make list of messages in the chat
      */
     private void makeMessagesBox() {
-        dispMessages.setMinHeight(300);
-        dispMessages.setMinWidth(390);
-        dispMessages.setAlignment(Pos.TOP_LEFT);
-        dispMessages.setBackground(white);
-        dispMessages.setPadding(new Insets(5));
-        dispMessages.getChildren().addAll(messages);
+        displayMessages.setMinHeight(300);
+        displayMessages.setMinWidth(390);
+        displayMessages.setAlignment(Pos.TOP_LEFT);
+        displayMessages.setBackground(white);
+        displayMessages.setPadding(new Insets(5));
+        displayMessages.getChildren().addAll(messages);
     }
 
 
@@ -225,7 +226,11 @@ public class ChatRoom {
         userLabel.setTextFill(Color.WHITE);
         userLabel.setMinWidth(390);
         userLabel.setMinHeight(50);
-        userLabel.setBackground(white);
+        if (this.controller.getCurrentUser().getOnline()) {
+            userLabel.setBackground(green);
+        } else {
+            userLabel.setBackground(red);
+        }
     }
 
     /**
@@ -243,14 +248,14 @@ public class ChatRoom {
                                             userInputBox,
                                             userButtonBox,
                                             userStatusInformationBox,
-                                            dispMessages,
+                                            displayMessages,
                                             messageEntryBox);
     }
     
     
-    /***********************************************************************/
-    /*                          Button Functions                           */
-    /***********************************************************************/
+    /************************************************************************
+    *                           Button Functions                            *
+    ************************************************************************/
     
 
     /**
@@ -284,21 +289,6 @@ public class ChatRoom {
     
     
     /**
-     * Adding "add user" button to the stage
-     */
-    private void makeAddUserButton() {
-        addButton.setMinWidth(100);
-        addButton.setMaxWidth(100);
-        addButton.setMinHeight(40);
-        addButton.setMaxHeight(40);
-        addButton.setOnAction(e -> {
-            e.consume();
-            addUser();
-        });
-    }
-    
-    
-    /**
      * Making the send button
      */
     private void makeSendButton() {
@@ -311,6 +301,22 @@ public class ChatRoom {
         sendButton.setOnAction(e -> {
             e.consume();
             respondToMessageAction();
+            setTextField();
+        });
+    }
+
+
+    /**
+     * Making the text field for the users message.
+     */
+    private void makeTextField() {
+        textField.setPrefWidth(300);
+        textField.setPrefHeight(50);
+        textField.setPromptText("Enter message here...");
+        textField.setOnAction(e -> {
+            e.consume();
+            respondToMessageAction();
+            setTextField();
         });
     }
 
@@ -326,11 +332,10 @@ public class ChatRoom {
         logOffButton.setBackground(white);
         logOffButton.setOnAction(e -> {
             e.consume();
-            if (this.controller.getCurrentUser() != null) {
-                this.controller.getCurrentUser().setOnlineStatus();
-            }
+            this.controller.getCurrentUser().setOnlineStatus();
         });
     }
+
 
     /**
      * Making the text field to add a user to the tuple space
@@ -344,34 +349,37 @@ public class ChatRoom {
             addUser();
         });
     }
-    
 
     /**
-     * Making the text field for the users message.
+     * Adding "add user" button to the stage
      */
-    private void makeTextField() {
-        textField.setPrefWidth(300);
-        textField.setPrefHeight(50);
-        textField.setPromptText("Enter message here...");
-        textField.setOnAction(e -> {
+    private void makeAddUserButton() {
+        addButton.setMinWidth(100);
+        addButton.setMaxWidth(100);
+        addButton.setMinHeight(40);
+        addButton.setMaxHeight(40);
+        addButton.setOnAction(e -> {
             e.consume();
-            respondToMessageAction();
+            addUser();
         });
     }
-    
-    
+
+
+    /************************************************************************
+    *                            Utility Functions                          *
+    /***********************************************************************/
+
+
     /**
      * Function to add a user from the user text field to the tuple space
      */
     private void addUser() {
-//        if (!addUserTextField.getText().isEmpty()) {
-//            controller.addToTupleSpace(new Tuple(false,
-//                                                 addUserTextField.getText()));
-//            controller.getUserOrder()
-//                      .add(new Tuple(false,
-//                                     addUserTextField.getText()));
-//            addUserTextField.clear();
-//        }
+        if (!addUserTextField.getText().isEmpty()) {
+            this.controller.addToTupleSpace(
+                    new Tuple(addUserTextField.getText(),
+                              true));
+        }
+        addUserTextField.clear();
     }
     
     
@@ -379,33 +387,18 @@ public class ChatRoom {
      * Setting up actions to when the user types in a message
      */
     private void respondToMessageAction() {
-//        Tuple tuple = null;
-//        if (!controller.getUserOrder().isEmpty()) {
-//            currentUser = controller.getUserOrder().removeFirst();
-//            if (!textField.getText().isEmpty()) {
-//                if (controller.getMessageStack().size() < 10) {
-//                    tuple = new Tuple(new Time(System.currentTimeMillis()),
-//                                      currentUser.getSet().get(1),
-//                                      textField.getText());
-//
-//                    controller.getMessageStack().push(tuple);
-//                    controller.addToTupleSpace(tuple);
-//
-//                } else {
-//                    tuple = new Tuple(new Time(System.currentTimeMillis()),
-//                                      currentUser.getSet().get(1),
-//                                      textField.getText());
-//                    controller.getMessageStack().removeLast();
-//                    controller.getMessageStack().push(tuple);
-//                    controller.addToTupleSpace(tuple);
-//                }
-//            }
-//            setTextField();
-//            textField.clear();
-//            controller.getUserOrder().addLast(tuple);
-//        } else {
-//            textField.clear();
-//        }
+        LinkedList<User> list = this.controller.getMessageStack();
+
+        this.controller.getMessageStack()
+                .add(0,
+                     new User(this.controller.getCurrentUser().getName(),
+                              this.controller.getCurrentUser().getOnline(),
+                              new Time(System.currentTimeMillis()),
+                              this.messages.getText()));
+
+        if (this.controller.getMessageStack().size() == 10) {
+            this.controller.getMessageStack().removeLast();
+        }
     }
 
 
@@ -428,12 +421,14 @@ public class ChatRoom {
     /**
      * Setting the text field of the interface
      */
-    private void setTextField(LinkedList<User> list) {
+    private void setTextField() {
         String text = "";
         
         this.messages.setText("");
-        for (User u: list) {
-            text += (u.getName() + "\n");
+        for (User u: this.controller.getMessageStack()) {
+            text += ("" + u.getTime() + " ");
+            text += ("" + u.getName() + ": ");
+            text += ("" + u.getMessage() + "\n");
         }
         
         this.messages.setTextAlignment(TextAlignment.LEFT);

@@ -17,7 +17,7 @@ public class Controller extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // adding the starting three users
+        // adding the starting 4 users
         this.tupSpace.add(new Tuple("Danan", true));
         this.tupSpace.add(new Tuple("Kyle", true));
         this.tupSpace.add(new Tuple("Diana", false));
@@ -39,6 +39,10 @@ public class Controller extends Application{
      */
     public void addToTupleSpace(Tuple tuple) {
         this.tupSpace.add(tuple);
+        this.userOrder.addLast(new User((String) tuple.getSet().get(0),
+                                        (Boolean) tuple.getSet().get(1),
+                                        null,
+                                        null));
     }
     
     
@@ -123,9 +127,7 @@ public class Controller extends Application{
      * Returning the current user of the tuple space
      * @return current user of the tuple space
      */
-    public User getCurrentUser() {
-        return this.currentUser;
-    }
+    public User getCurrentUser() { return this.currentUser; }
 
 
     /**
