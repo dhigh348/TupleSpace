@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddUser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TupleSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TupleSpace.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,34 +50,34 @@
     <session id="-737352199">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="5" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="7" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="10610" />
-          <entry key="txt" value="191" />
+          <entry key="java" value="10884" />
+          <entry key="txt" value="246" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10610" />
-          <entry key="PLAIN_TEXT" value="191" />
+          <entry key="JAVA" value="10884" />
+          <entry key="PLAIN_TEXT" value="246" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="21" />
+          <entry key="java" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="21" />
+          <entry key="JAVA" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -86,16 +86,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1138">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="140" column="77" selection-start-line="140" selection-start-column="77" selection-end-line="140" selection-end-column="77" />
+            <state relative-caret-position="543">
+              <caret line="123" column="43" lean-forward="true" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2068#2069#0" expanded="true" />
-                <element signature="e#2098#2099#0" expanded="true" />
-                <element signature="e#2249#2250#0" expanded="true" />
-                <element signature="e#2279#2280#0" expanded="true" />
+                <element signature="e#2420#2421#0" expanded="true" />
+                <element signature="e#2459#2460#0" expanded="true" />
+                <element signature="e#2633#2634#0" expanded="true" />
+                <element signature="e#2673#2674#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,8 +113,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ChatRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="327" column="37" lean-forward="true" selection-start-line="327" selection-start-column="37" selection-end-line="327" selection-end-column="37" />
+            <state relative-caret-position="398">
+              <caret line="336" column="26" lean-forward="true" selection-start-line="336" selection-start-column="26" selection-end-line="336" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -113,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="91" column="39" lean-forward="true" selection-start-line="91" selection-start-column="39" selection-end-line="92" selection-end-column="55" />
+            <state relative-caret-position="1365">
+              <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="92" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -122,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
+            <state relative-caret-position="1380">
               <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -135,7 +144,7 @@
         <entry file="file://$PROJECT_DIR$/src/Tuple.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -179,10 +188,10 @@
         <option value="$PROJECT_DIR$/src/TupleNode.java" />
         <option value="$PROJECT_DIR$/SupplimentaryFiles/IdeaHolder" />
         <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/TupleSpace.java" />
         <option value="$PROJECT_DIR$/src/AddUser.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
         <option value="$PROJECT_DIR$/src/Tuple.java" />
+        <option value="$PROJECT_DIR$/src/TupleSpace.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/ChatRoom.java" />
       </list>
@@ -205,6 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -228,13 +238,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538293948761" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538294354819" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -455,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538290693995</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Committing fully working chat room and controller.">
+      <created>1538293984373</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1538293984373</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -465,7 +481,7 @@
     <frame x="274" y="23" width="2239" height="1360" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23441055" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23987256" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -546,7 +562,8 @@
     <MESSAGE value="ChatRoom.java changes" />
     <MESSAGE value="Making changes to ChatRoom.java" />
     <MESSAGE value="Made changes to how the controller handles the passing of information to the chat. Also changed layout of the chat (active and online user changes)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made changes to how the controller handles the passing of information to the chat. Also changed layout of the chat (active and online user changes)." />
+    <MESSAGE value="Committing fully working chat room and controller." />
+    <option name="LAST_COMMIT_MESSAGE" value="Committing fully working chat room and controller." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Documents/CS251/lab7/Node.java" />
@@ -558,16 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -589,9 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#3238#3239#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -620,9 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="147" selection-start-line="147" selection-end-line="147" />
-          <folding>
-            <element signature="e#4393#4394#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -630,16 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="157" selection-start-line="157" selection-end-line="157" />
-          <folding>
-            <element signature="e#4603#4604#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3255">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
         </state>
       </provider>
     </entry>
@@ -647,9 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="373" selection-start-line="373" selection-end-line="373" />
-          <folding>
-            <element signature="e#11997#11998#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,9 +648,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddUser.java" />
+    <entry file="file://$USER_HOME$/Documents/Java Programs/JavaTest/JavaTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="92" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
+        <state relative-caret-position="1380">
           <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -670,38 +669,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="91" column="39" lean-forward="true" selection-start-line="91" selection-start-column="39" selection-end-line="92" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TupleSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1138">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="140" column="77" selection-start-line="140" selection-start-column="77" selection-end-line="140" selection-end-column="77" />
+        <state relative-caret-position="543">
+          <caret line="123" column="43" lean-forward="true" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2068#2069#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-            <element signature="e#2249#2250#0" expanded="true" />
-            <element signature="e#2279#2280#0" expanded="true" />
+            <element signature="e#2420#2421#0" expanded="true" />
+            <element signature="e#2459#2460#0" expanded="true" />
+            <element signature="e#2633#2634#0" expanded="true" />
+            <element signature="e#2673#2674#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChatRoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="327" column="37" lean-forward="true" selection-start-line="327" selection-start-column="37" selection-end-line="327" selection-end-column="37" />
+        <state relative-caret-position="398">
+          <caret line="336" column="26" lean-forward="true" selection-start-line="336" selection-start-column="26" selection-end-line="336" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -745,7 +744,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>9.0</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -762,6 +761,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

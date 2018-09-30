@@ -34,30 +34,13 @@ public class Controller extends Application{
      * Adding to the tuple space
      * @return tupleSpace from the controller
      */
-    public void addToTupleSpace(Tuple tuple) {
+    public void addToTupleSpace(Object...objects) {
+        Tuple tuple = new Tuple(objects);
         this.tupSpace.add(tuple);
         this.userOrder.addLast(new User((String) tuple.getSet().get(0),
                                         (Boolean) tuple.getSet().get(1),
                                         null,
                                         null));
-    }
-    
-    
-    /**
-     * Removing from the tuple space
-     * @return tuple from the tuple space
-     */
-    public Tuple removeFromTheTupleSpace(Object...objects) {
-        return this.tupSpace.remove(objects);
-    }
-    
-    
-    /**
-     * Reading from the tuple space
-     * @return tuple from the tuple space
-     */
-    public Tuple readFromTupleSpace(Object...objects) {
-        return this.tupSpace.read(objects);
     }
 
 
@@ -66,13 +49,6 @@ public class Controller extends Application{
      * @return messageList of the messages
      */
     public LinkedList<User> getMessageStack() { return this.messageList; }
-
-
-    /**
-     * Returning the order of the list of users
-     * @return ordered list of the users
-     */
-    public LinkedList<User> getUserOrder() { return this.userOrder; }
 
 
     /**
@@ -139,6 +115,11 @@ public class Controller extends Application{
                                            this.currentUser.getOnline(),
                                            this.currentUser.getTime(),
                                            this.getCurrentUser().getMessage()));
+
+        this.tupSpace.add(new Tuple(this.currentUser.getName(),
+                                    this.currentUser.getOnline(),
+                                    this.currentUser.getTime(),
+                                    this.currentUser.getMessage()));
 
         if (this.messageList.size() > 10) {
             this.messageList.removeLast();

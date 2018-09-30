@@ -59,9 +59,12 @@ public class TupleSpace {
      */
     public Tuple read(Object...objects) {
         if (hasWildCard(objects)) {
-            return checkSpace(false, sizeMap.get(objects.length), objects);
+            return checkSpace(false,
+                              sizeMap.get(objects.length),
+                              objects);
         } else {
-            return checkSpace(false, objects);
+            return checkSpace(false,
+                              objects);
         }
     }
     
@@ -73,9 +76,12 @@ public class TupleSpace {
      */
     public Tuple remove(Object...objects) {
         if (hasWildCard(objects)) {
-            return checkSpace(true, sizeMap.get(objects.length), objects);
+            return checkSpace(true,
+                              sizeMap.get(objects.length),
+                              objects);
         } else {
-            return checkSpace(true, objects);
+            return checkSpace(true,
+                              objects);
         }
     }
 

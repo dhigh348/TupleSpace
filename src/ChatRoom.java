@@ -22,7 +22,7 @@ public class ChatRoom {
 
     private Button addButton = new Button("Add User");
     private Button sendButton = new Button("Send");
-    private Button logOffButton = new Button("Logoff");
+    private Button logOffButton = new Button("Log on/off");
     private Button activeUsersButton = new Button("Active");
     private Button allUsersButton = new Button("All");
     private Controller controller;
@@ -334,6 +334,7 @@ public class ChatRoom {
         logOffButton.setOnAction(e -> {
             e.consume();
             this.controller.getCurrentUser().setOnlineStatus();
+            updateLabel();
         });
     }
 
@@ -389,9 +390,8 @@ public class ChatRoom {
      */
     private void addUser() {
         if (!addUserTextField.getText().isEmpty()) {
-            this.controller.addToTupleSpace(
-                    new Tuple(addUserTextField.getText(),
-                              true));
+            this.controller.addToTupleSpace(addUserTextField.getText(),
+                                            true);
         }
         addUserTextField.clear();
     }
@@ -414,7 +414,7 @@ public class ChatRoom {
     private void setTextOfUsers(LinkedList<User> list, Text field) {
         String text = "";
 
-        this.userList.setText("");
+        field.setText("");
         for (User u: list) {
             text += (u.getName() + "\n");
         }
