@@ -3,6 +3,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -29,8 +30,9 @@ public class ChatRoom {
     
     private TextField textField = new TextField();
     private TextField addUserTextField = new TextField();
-    private Text userList = new Text(), messages = new Text();
-    private Text onlineUsers = new Text();
+    private TextArea userList = new TextArea();
+    private TextArea onlineUsers = new TextArea();
+    private Text messages = new Text();
     private Label userLabel = new Label();
 
     private HBox userButtonBox = new HBox(), displayUsers = new HBox();
@@ -156,6 +158,7 @@ public class ChatRoom {
     private void makeAllUsersDisplay() {
         displayUsers.setMinHeight(200);
         displayUsers.setMinWidth(160);
+        displayUsers.setMaxWidth(160);
         displayUsers.setAlignment(Pos.TOP_LEFT);
         displayUsers.setBackground(white);
         displayUsers.setPadding(new Insets(5));
@@ -169,6 +172,7 @@ public class ChatRoom {
     private void makeOnlineUsersBox() {
         onlineUsersBox.setMinHeight(200);
         onlineUsersBox.setMinWidth(160);
+        onlineUsersBox.setMaxWidth(160);
         onlineUsersBox.setAlignment(Pos.TOP_LEFT);
         onlineUsersBox.setBackground(white);
         onlineUsersBox.setPadding(new Insets(5));
@@ -411,7 +415,7 @@ public class ChatRoom {
     /**
      * Setting the printing of all of the users in the chat
      */
-    private void setTextOfUsers(LinkedList<User> list, Text field) {
+    private void setTextOfUsers(LinkedList<User> list, TextArea field) {
         String text = "";
 
         field.setText("");
@@ -419,7 +423,7 @@ public class ChatRoom {
             text += (u.getName() + "\n");
         }
 
-        field.setTextAlignment(TextAlignment.LEFT);
+        field.setScrollLeft(35);
         field.setText(text);
     }
 

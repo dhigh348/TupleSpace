@@ -16,6 +16,9 @@ public class User extends Tuple {
     /**
      * Constructor for the user
      * @param name of the user
+     * @param online status of the user
+     * @param time stamp of the user
+     * @param message from the user
      */
     public User(String name, Boolean online, Time time, String message) {
         super(name, online, time, message);

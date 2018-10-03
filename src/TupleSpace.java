@@ -90,6 +90,7 @@ public class TupleSpace {
     /**
      * Checking if the tuple space contains a Tuple with the specified values
      * @param objects to search for
+     * @param removeTup boolean to determine if the tuple is to be removed
      * @return tuple of null or found tuple
      */
     private Tuple checkSpace(Boolean removeTup, Object...objects) {
@@ -114,6 +115,7 @@ public class TupleSpace {
     
     /**
      * Returning a tuple from wildcard parameters
+     * @param removeTup boolean to determine if tuple is to be removed
      * @param check map of the current level from the TupleSpace map
      * @param objects to search for
      * @return tuple from the space
@@ -175,6 +177,7 @@ public class TupleSpace {
     /**
      * Getting a tuple using the object parameters that contain wildcards
      * @param tupMap level to get the tuples from
+     * @param remove boolean to determine if the tuple is to be removed
      * @return tuple from the map
      */
     private Tuple getTuple(HashMap<Object, TupleNode> tupMap, Boolean remove) {

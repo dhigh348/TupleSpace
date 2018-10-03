@@ -15,13 +15,18 @@ public class Controller extends Application{
     private User currentUser = null;
 
 
+    /**
+     * Function overriding the start function to run the program
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         // adding the starting 4 users
         this.tupSpace.add(new Tuple("Danan", true));
         this.tupSpace.add(new Tuple("Kyle", true));
         this.tupSpace.add(new Tuple("Diana", false));
-        this.tupSpace.add(new Tuple("Kalam", true));
+        this.tupSpace.add(new Tuple("Kel", true));
         this.userOrder = search("*", "*");
         this.currentUser = this.userOrder.getFirst();
 
@@ -71,6 +76,7 @@ public class Controller extends Application{
 
     /**
      * Performing a search of the tuple space for the specific objects
+     * @param objects to search for in the controller's tuple space
      */
     private LinkedList<User> search(Object...objects) {
         LinkedList<Tuple> list = new LinkedList<>();
@@ -136,12 +142,3 @@ public class Controller extends Application{
      */
     public static void main(String[] args) throws Exception { launch(args); }
 }
-
-/*
-
- how to structure users
-    group for users, online status (which means you can get all users this way)
-    group for users, time stamp and message
-    name of the user is always first parameter
-
- */
