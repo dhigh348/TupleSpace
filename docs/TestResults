@@ -8,5 +8,5 @@ For the final solution:
     after read: 2647 ms
     after remove: 2732 ms
 
-Both tests ran with 100000 tuple add's initially. Then there was 10000 reads,
+Both tests ran with 100000 tuple add's initially. Then there were 10000 reads,
 then there were 10000 removes, followed by 10000 adds back into the tuple space.
