@@ -37,18 +37,6 @@ public class Tuple {
      * @return number of parameters of the tuple
      */
     public int getSize() { return this.size; }
-
-
-    /**
-     * Printing the tuple to the console
-     */
-    public String printTuple() {
-        String tupPrint = "";
-        int i = 0;
-        tupPrint += (getSet().get(2) + " " + getSet().get(0) + ": "
-                + getSet().get(3) + "\n");
-        return tupPrint;
-    }
 }
 
 

@@ -6,7 +6,8 @@ Program Use:
 
     The tuple space takes in tuples and stores them in a trie data structure
     contained within a HashMap in the TupleSpace class. The tuple space can add, 
-    remove and read tuples from and to the space. 
+    remove and read tuples from and to the space. I used the "*" for the wild
+    card search parameter.
 
     The chat room is the user interface for users to create messages between one 
     another. The chat has been populated with 4 users to begin. One has been set 
