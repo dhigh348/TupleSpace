@@ -44,7 +44,7 @@ public class User extends Tuple {
     
     
     /**
-     * Function to return the time of the user
+     * Function to return the time of the users
      * @return the time stamp that the user has when making a move
      */
     public Time getTime() { return time; }

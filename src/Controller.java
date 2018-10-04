@@ -37,6 +37,7 @@ public class Controller extends Application{
     
     /**
      * Adding to the tuple space
+     * @param objects to add to the space
      * @return tupleSpace from the controller
      */
     public void addToTupleSpace(Object...objects) {
@@ -46,6 +47,14 @@ public class Controller extends Application{
                                         (Boolean) tuple.getSet().get(1),
                                         null,
                                         null));
+    }
+    
+    
+    /**
+     * Removing a user that is offline from the tuple spcae
+     */
+    public void removeFromTupleSpace(Object...objects) {
+        this.tupSpace.remove(objects);
     }
 
 
@@ -77,6 +86,7 @@ public class Controller extends Application{
     /**
      * Performing a search of the tuple space for the specific objects
      * @param objects to search for in the controller's tuple space
+     * @return userList of the users
      */
     private LinkedList<User> search(Object...objects) {
         LinkedList<Tuple> list = new LinkedList<>();

@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.sql.Time;
 import java.util.LinkedList;
 
 /**
@@ -341,6 +340,21 @@ public class ChatRoom {
         logOffButton.setOnAction(e -> {
             e.consume();
             this.controller.getCurrentUser().setOnlineStatus();
+            if (this.controller.getCurrentUser().getOnline()) {
+                this.controller.addToTupleSpace(this.controller
+                                                    .getCurrentUser()
+                                                    .getName(),
+                                                this.controller
+                                                    .getCurrentUser()
+                                                    .getOnline());
+            } else {
+                this.controller.removeFromTupleSpace(this.controller
+                                                         .getCurrentUser()
+                                                         .getName(),
+                                                     !this.controller
+                                                         .getCurrentUser()
+                                                         .getOnline());
+            }
             updateLabel();
             this.controller.updateTurn();
             updateLabel();
