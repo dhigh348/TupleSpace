@@ -1,3 +1,5 @@
+
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -321,7 +323,8 @@ public class ChatRoom {
         textField.setOnAction(e -> {
             e.consume();
             respondToMessageAction();
-            setTextField();updateLabel();
+            setTextField();
+            updateLabel();
         });
     }
 
@@ -338,6 +341,8 @@ public class ChatRoom {
         logOffButton.setOnAction(e -> {
             e.consume();
             this.controller.getCurrentUser().setOnlineStatus();
+            updateLabel();
+            this.controller.updateTurn();
             updateLabel();
         });
     }
@@ -438,6 +443,7 @@ public class ChatRoom {
             text += (u.toString() + "\n");
         }
         
+        this.controller.updateTurn();
         this.messages.setTextAlignment(TextAlignment.LEFT);
         this.messages.setText(text);
     }

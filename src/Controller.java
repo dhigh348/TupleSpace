@@ -130,7 +130,13 @@ public class Controller extends Application{
         if (this.messageList.size() > 10) {
             this.messageList.removeLast();
         }
-
+    }
+    
+    
+    /**
+     * Updating the user turn
+     */
+    public void updateTurn() {
         User user = this.userOrder.removeFirst();
         this.userOrder.addLast(user);
         this.currentUser = this.userOrder.getFirst();
