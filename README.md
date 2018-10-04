@@ -35,4 +35,5 @@ Testing/Debugging:
 
 Known Bugs/Issues: 
 
-    There aren't any known issues that I have come accross.
+    The only known issue that I have come accross is that my .gitignore file is
+    not working. It is not ignoring files that it should be ignoring. 
