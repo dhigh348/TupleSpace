@@ -1,12 +1,26 @@
 For the naive solution:
+
     after add: 40 ms
     after read: 28009 ms
     after remove: 29646 ms
 
 For the final solution:
+
     after add: 106 ms
     after read: 2647 ms
     after remove: 2732 ms
 
-Both tests ran with 100000 tuple add's initially. Then there were 10000 reads,
-then there were 10000 removes, followed by 10000 adds back into the tuple space.
+Conclusions:
+
+    Both tests ran with 100000 tuple add's initially. Then there were 10000 reads,
+    then there were 10000 removes, followed by 10000 adds back into the tuple space.
+    The times above are the recordings of the time it took for each task to 
+    perform in miliseconds. 
+    
+    The initial solution was creating an ArrayList of all of the tuples to be
+    added. The final solution was to create a HashMap of tries to store all 
+    the tuples in the space. As it can be seen above the insertion time is 
+    slower, but is very negligable. However, the difference between the reading
+    and removing, roughly 26 seconds is a very large jump. This allowed me to 
+    come to the conclusion that the trie was the correct and final data structure
+    to use.
