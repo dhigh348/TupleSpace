@@ -7,20 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae88421a-412f-47ee-8958-64c8120f2646" name="Default Changelist" comment="Updata to Tuple.java and the README.md">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TupleSpace_DananHigh.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TupleSpace/TupleSpace.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ChatRoom.java" afterPath="$PROJECT_DIR$/src/ChatRoom/ChatRoom.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Controller.java" afterPath="$PROJECT_DIR$/src/ChatRoom/Controller.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Tuple.java" afterPath="$PROJECT_DIR$/src/ChatRoom/Tuple.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TupleNode.java" afterPath="$PROJECT_DIR$/src/ChatRoom/TupleNode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TupleSpace.java" afterPath="$PROJECT_DIR$/src/ChatRoom/TupleSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/User.java" afterPath="$PROJECT_DIR$/src/ChatRoom/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EarlyTesting/TupleSpaceEarly.java" afterPath="$PROJECT_DIR$/src/EarlyTesting/TupleSpaceEarly.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -149,8 +136,8 @@
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            <state relative-caret-position="378">
+              <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -552,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538678520181</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Updata to Tuple.java and the README.md">
+      <created>1538722663807</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1538722663807</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -923,8 +917,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        <state relative-caret-position="378">
+          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding />
         </state>
       </provider>
