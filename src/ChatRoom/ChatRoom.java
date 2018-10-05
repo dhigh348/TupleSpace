@@ -64,7 +64,8 @@ public class ChatRoom {
                                                                 Insets.EMPTY));
     /**
      * Constructor for the ChatRoom.ChatRoom
-     * @param controller for the Chat to be able to talk to the ChatRoom.TupleSpace
+     * @param controller for the Chat to be able to talk to
+     *        the ChatRoom.TupleSpace
      */
     public ChatRoom(Controller controller) {
         this.controller = controller;
@@ -74,7 +75,7 @@ public class ChatRoom {
     /**
      * Showing and making the stage for the chat room
      * @param primaryStage to show the chat room
-     * @throws Exception
+     * @throws Exception if the program is unable to run
      */
     public void show(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Chat Room");

@@ -15,7 +15,7 @@ public class TupleEarly {
 
     /**
      * Constructor for making the Tuple
-     * @param objects
+     * @param objects for the constructor
      */
     public TupleEarly(Object...objects) {
         this.size = objects.length;
@@ -38,6 +38,7 @@ public class TupleEarly {
 
     /**
      * Checking if the tuple pattern is a match for the pattern being searched for
+     * @param objects to check for
      * @return true if the same and false otherwise
      */
     public boolean checkPattern(Object...objects) {

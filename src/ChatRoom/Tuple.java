@@ -16,7 +16,7 @@ public class Tuple {
     
     /**
      * Constructor for making the ChatRoom.Tuple
-     * @param objects
+     * @param objects for the tuple constructor
      */
     public Tuple(Object...objects) {
         this.size = objects.length;

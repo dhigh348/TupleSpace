@@ -75,7 +75,7 @@ public class User extends Tuple {
 
     /**
      * Setting the user to have the new associated message value
-     * @param newMessage
+     * @param newMessage to give to the user
      */
     public void setMessage(String newMessage) { this.message = newMessage; }
 

@@ -17,6 +17,7 @@ public class TupleSpaceEarly {
 
     /**
      * Constructor for the ChatRoom.TupleSpace
+     * @param size of the tuple space
      */
     public TupleSpaceEarly(int size) {
         this.size = size;
@@ -25,6 +26,7 @@ public class TupleSpaceEarly {
 
     /**
      * Adding the specified tuple to the ChatRoom.TupleSpace repository
+     * @param tuple to add to the repository
      */
     public void add(TupleEarly tuple) {
         if (tuple != null) {
@@ -35,6 +37,7 @@ public class TupleSpaceEarly {
 
     /**
      * Returning and removing the tuple from the repository.
+     * @param objects to search for
      * @return tuple from the repository
      */
     public TupleEarly remove(Object...objects) {
@@ -58,6 +61,7 @@ public class TupleSpaceEarly {
 
     /**
      * Returning the individual tuple from the repository
+     * @param objects to search for
      * @return tuple to print
      */
     public TupleEarly read(Object...objects) {
@@ -77,6 +81,7 @@ public class TupleSpaceEarly {
 
     /**
      * Printing the map
+     * @param objects to print for the tuple
      */
     public void print(Object...objects) {
         TupleEarly tuple = null;

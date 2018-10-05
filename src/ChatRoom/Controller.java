@@ -19,8 +19,8 @@ public class Controller extends Application{
 
     /**
      * Function overriding the start function to run the program
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage the stage to pass to the chatroom to draw on
+     * @throws Exception if the application can't run
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -40,7 +40,6 @@ public class Controller extends Application{
     /**
      * Adding to the tuple space
      * @param objects to add to the space
-     * @return tupleSpace from the controller
      */
     public void addToTupleSpace(Object...objects) {
         Tuple tuple = new Tuple(objects);
@@ -54,6 +53,7 @@ public class Controller extends Application{
     
     /**
      * Removing a user that is offline from the tuple spcae
+     * @param objects to search for
      */
     public void removeFromTupleSpace(Object...objects) {
         this.tupSpace.remove(objects);
@@ -157,6 +157,8 @@ public class Controller extends Application{
 
     /**
      * main method to run the program
+     * @param args to run the program
+     * @throws Exception if the program can't run
      */
     public static void main(String[] args) throws Exception { launch(args); }
 }
