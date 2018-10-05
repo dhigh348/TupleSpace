@@ -1,10 +1,12 @@
+package ChatRoom;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
 /**
- * Controller.java is the class that manages the interactions between the
+ * ChatRoom.Controller.java is the class that manages the interactions between the
  * interactions between the chat room and the tuple space.
  * Danan High, 9/27/2018
  */

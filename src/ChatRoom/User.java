@@ -1,9 +1,11 @@
+package ChatRoom;
+
 import java.sql.Time;
 import java.util.ArrayList;
 
 
 /**
- * User.java is the class that holds the user's information
+ * ChatRoom.User.java is the class that holds the user's information
  * Danan High, 9/28/2018
  */
 public class User extends Tuple {

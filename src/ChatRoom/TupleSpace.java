@@ -1,8 +1,10 @@
+package ChatRoom;
+
 import java.util.*;
 
 
 /**
- * TupleSpace.java is the data center for holding the users and their associated
+ * ChatRoom.TupleSpace.java is the data center for holding the users and their associated
  *   messages and statuses.
  * Danan High, 9/18/2018
  */
@@ -13,7 +15,7 @@ public class TupleSpace {
     private HashMap<Integer, HashMap<Object, TupleNode>> sizeMap;
 
     /**
-     * Constructor for the TupleSpace
+     * Constructor for the ChatRoom.TupleSpace
      * @param size of the tuples
      */
     public TupleSpace(int size) {
@@ -27,8 +29,8 @@ public class TupleSpace {
 
 
     /**
-     * Adding the specified tuple to the TupleSpace repository
-     * @param tuple to add to the TupleSpace
+     * Adding the specified tuple to the ChatRoom.TupleSpace repository
+     * @param tuple to add to the ChatRoom.TupleSpace
      */
     public void add(Tuple tuple) {
         int tupleSize = tuple.getSize();
@@ -88,7 +90,7 @@ public class TupleSpace {
 
 
     /**
-     * Checking if the tuple space contains a Tuple with the specified values
+     * Checking if the tuple space contains a ChatRoom.Tuple with the specified values
      * @param objects to search for
      * @param removeTup boolean to determine if the tuple is to be removed
      * @return tuple of null or found tuple
@@ -116,7 +118,7 @@ public class TupleSpace {
     /**
      * Returning a tuple from wildcard parameters
      * @param removeTup boolean to determine if tuple is to be removed
-     * @param check map of the current level from the TupleSpace map
+     * @param check map of the current level from the ChatRoom.TupleSpace map
      * @param objects to search for
      * @return tuple from the space
      */

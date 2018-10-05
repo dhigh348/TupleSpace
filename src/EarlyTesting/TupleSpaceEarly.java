@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * TupleSpace.java is the data center for holding the users and their associated
+ * ChatRoom.TupleSpace.java is the data center for holding the users and their associated
  *   messages and statuses.
  * Danan High, 9/18/2018
  */
@@ -16,7 +16,7 @@ public class TupleSpaceEarly {
     private List<TupleEarly> repository;
 
     /**
-     * Constructor for the TupleSpace
+     * Constructor for the ChatRoom.TupleSpace
      */
     public TupleSpaceEarly(int size) {
         this.size = size;
@@ -24,7 +24,7 @@ public class TupleSpaceEarly {
     }
 
     /**
-     * Adding the specified tuple to the TupleSpace repository
+     * Adding the specified tuple to the ChatRoom.TupleSpace repository
      */
     public void add(TupleEarly tuple) {
         if (tuple != null) {

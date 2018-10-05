@@ -1,7 +1,9 @@
+package ChatRoom;
+
 import java.util.HashMap;
 
 /**
- * TupleNode.java is the class that makes up the nodes of the TupleSpace
+ * ChatRoom.TupleNode.java is the class that makes up the nodes of the ChatRoom.TupleSpace
  *   retrieval tree.
  * Danan High, 9/25/2018
  */
@@ -12,7 +14,7 @@ public class TupleNode {
     
     
     /**
-     * Constructor for the TupleNode that contains the data (object) and the
+     * Constructor for the ChatRoom.TupleNode that contains the data (object) and the
      * new map that holds the data.
      * @param object of data
      */

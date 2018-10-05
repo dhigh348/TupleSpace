@@ -1,9 +1,11 @@
+package ChatRoom;
+
 import java.util.ArrayList;
 import java.math.*;
 
 
 /**
- * Tuple.java is the class that holds all of the data for a single tuple.
+ * ChatRoom.Tuple.java is the class that holds all of the data for a single tuple.
  * Danan High, 9/18/2018
  */
 public class Tuple {
@@ -13,7 +15,7 @@ public class Tuple {
     
     
     /**
-     * Constructor for making the Tuple
+     * Constructor for making the ChatRoom.Tuple
      * @param objects
      */
     public Tuple(Object...objects) {

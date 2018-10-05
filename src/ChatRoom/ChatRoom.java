@@ -1,4 +1,4 @@
-
+package ChatRoom;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,12 +17,12 @@ import javafx.stage.Stage;
 import java.util.LinkedList;
 
 /**
- * ChatRoom.java is the class that displays the gui for users of the chat room
+ * ChatRoom.ChatRoom.java is the class that displays the gui for users of the chat room
  * Danan High, 9/28/2018
  */
 public class ChatRoom {
 
-    private Button addButton = new Button("Add User");
+    private Button addButton = new Button("Add ChatRoom.User");
     private Button sendButton = new Button("Send");
     private Button logOffButton = new Button("Log on/off");
     private Button activeUsersButton = new Button("Active");
@@ -63,8 +63,8 @@ public class ChatRoom {
                                                                         .EMPTY,
                                                                 Insets.EMPTY));
     /**
-     * Constructor for the ChatRoom
-     * @param controller for the Chat to be able to talk to the TupleSpace
+     * Constructor for the ChatRoom.ChatRoom
+     * @param controller for the Chat to be able to talk to the ChatRoom.TupleSpace
      */
     public ChatRoom(Controller controller) {
         this.controller = controller;

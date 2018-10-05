@@ -1,11 +1,11 @@
 Program Use: 
 
     There aren't any command line arguments when running the program. The main class
-    for the entry point of the program is the Controller class. This class handles
+    for the entry point of the program is the ChatRoom.Controller class. This class handles
     all of the interactions between the tuple space and the chat room.
 
     The tuple space takes in tuples and stores them in a trie data structure
-    contained within a HashMap in the TupleSpace class. The tuple space can add, 
+    contained within a HashMap in the ChatRoom.TupleSpace class. The tuple space can add,
     remove and read tuples from and to the space. I used the "*" for the wild
     card search parameter.
 
